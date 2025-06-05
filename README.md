@@ -1,4 +1,4 @@
-# TEKBOT WEST readme's <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Flag_of_Panama.svg" alt="Bandera de Panamá" width="30"/>
+# TEKBOT WEST's readme <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Flag_of_Panama.svg" alt="Bandera de Panamá" width="30"/>
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/be75ac88-018e-48ce-b09f-6da08b648245" alt="TEKBOT (1)">
