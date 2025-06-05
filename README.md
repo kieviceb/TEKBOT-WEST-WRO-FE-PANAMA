@@ -8,7 +8,7 @@
 fotito
 ## Luis Hidalgo
 ### Age: 16
-
+<img src="https://github.com/user-attachments/assets/c2d76d96-894a-4840-8a7d-57509f288950" alt="Imagen 1" width="400">
 
 ## Ericka Ceballos
 ### Age: 18
