@@ -20,4 +20,5 @@ fotito
 ## Our Coach
 ## Diego Delgado
 ### Age: tweni something
+<img src="https://github.com/user-attachments/assets/62bdbddc-198d-45f3-9362-ef5118d6e788" alt="Imagen 1" width="400">
 
