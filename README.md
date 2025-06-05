@@ -20,7 +20,7 @@ fotito
 
 ## Patric Sutherland
 ### Age: 17
-<img src="https://github.com/user-attachments/assets/62bdbddc-198d-45f3-9362-ef5118d6e788" alt="Imagen 1" width="400">
+<img src="https://github.com/user-attachments/assets/825efd1b-db29-480d-b972-22ae3139cd18)" alt="Imagen 1" width="400">
 
 
 ## Our Coach
