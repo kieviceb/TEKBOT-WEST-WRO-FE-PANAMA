@@ -42,10 +42,9 @@ fotito
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
 
-
-| <img src="https://github.com/user-attachments/assets/719a51d8-4b14-402d-a462-ba1e4b071c2c" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/8e77a2b0-b6ea-4c8d-b3eb-0b56e681f396" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/5759c1c0-6d84-4f4d-907a-5cbe9ee2f24a" alt="Alt 1" width="200"/> | 
+| <img src="https://github.com/user-attachments/assets/719a51d8-4b14-402d-a462-ba1e4b071c2c" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3641b928-34c5-4d97-861c-fa08d40c9faa" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/4adda023-cb88-4a00-9a89-d7be3f75bf26" alt="Alt 1" width="200"/> | 
 | :------------: |:-------------:| :------------:|
-|[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[MPU6050 Gyroscope x1](https://a.co/d/42jYlB6)|[Step down LM2596 x1](https://a.co/d/e4jJKCS)|
+|[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/42jYlB6)|[Step down LM2596 x1](https://a.co/d/e4jJKCS)|
 | <img src="https://github.com/user-attachments/assets/b18d0b71-d5d0-44e2-b93b-2b98f50b130e" width="200"/> | <img src="https://github.com/user-attachments/assets/19b0baad-f049-460a-b44f-da65eaff72fe" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/eb89182e-ea3c-44d7-b393-524da5d71a76" alt="Alt 1" width="200"/> |
 | [Double Sided Prototype Universal PCB Board x2](https://a.co/d/9mUTqVe) |[TB6612 motor driver](https://a.co/d/fpJSHg1)|[HC-SRO4 ultrasonic sensor x3](https://a.co/d/et6RN4v) |
 | <img src="https://github.com/user-attachments/assets/513880ec-f790-4aef-a47f-c8ed698db903" width="200"/> |<img src="https://github.com/user-attachments/assets/e4c588c3-7ddb-41af-b9a1-c38992c0b703" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/94190821-27a9-408e-8576-bd84be9f907c" alt="Alt 1" width="200"/> |
