@@ -62,7 +62,7 @@ A list of all the electrical and mechanical components on the robot.
 
 # Mobility Management ⚙️
 # Power Management 🔋
-# Sense and Object Detection Management 👁️
+# Sense and Object Detection 👁️
 
 
 # Overview of our repository 📖
