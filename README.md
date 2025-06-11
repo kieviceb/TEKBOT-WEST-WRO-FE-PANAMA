@@ -19,6 +19,7 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 * `README.md` - Here's all our journey in the development of our robot here we explain every part of the robot making.
 
 # Repo folder structure
+```
 📦 TEKBOT-WEST-WRO-FE
 ├── 📁 3D_printables # 3D models ready for printing robot components
 ├── 📁 schemes # Diagrams, schematics, and other electrical plans
@@ -27,6 +28,7 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 ├── 📁 vehicle photos # Pictures of the robot at different stages and views
 ├── 📁 video # Videos of testing, demos, and competition runs
 ├── 📄 README.md # Main project documentation and overview
+```
   
 ## Team members 👨‍💻
 fotito
