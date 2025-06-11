@@ -7,7 +7,7 @@
 [![Instagram](https://img.shields.io/badge/Instagram-%23E9805F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/tekbot_lab?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==)
 [![Facebook](https://img.shields.io/badge/YouTube-%23E4445F.svg?style=for-the-badge&logo=Youtube&logoColor=white)](https://www.youtube.com/@TEKBOT_LAB)
 
-This is the official repository for TEKBOT WEST, the team participating in the Panama WRO Regional Championship to compete for a spot on the national team. Here you'll find everything related to the development of our robot as we strive towards the national and international finals!
+This is the official repository for TEKBOT WEST, the team participating in the Panama WRO Regional phase to compete for a spot on the national team. Here you'll find everything related to the development of our robot as we strive towards the national and international finals!
 
 
 ## Team members 👨‍💻
