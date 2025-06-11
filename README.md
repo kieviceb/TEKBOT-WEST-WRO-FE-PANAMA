@@ -9,14 +9,6 @@
 
 This is the official repository for TEKBOT WEST, the team participating in the Panama WRO Regional phase to compete for a spot on the national team. Here you'll find everything related to the development of our robot as we strive towards the national and international finals!
 
-# Overview of our repository 📖
-* [`3D_printables`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/3D_printables)- For our 3d printed resources used on this proyect.
-* [`schemes`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/schemes) - here you can find how all the components are connected.
-* [`src`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/src)- Includes all the codes , open and obstacle challenge, as wel the raspberry pi code and the arduino.
-* [`team photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/team%20photos) - photos of the team on file one formal and a funny one.
-* [`vehicle photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/vehicle%20photos) - photos of every angle of the robot.
-* [`video`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/video) - the link to our youtube channel where you can see our robot in action completing both challenges.
-* `README.md` - Here's all our journey in the development of our robot here we explain every part of the robot making.
 
 # Repo folder structure
 ```
@@ -30,7 +22,7 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 ├── 📄 README.md # Main project documentation and overview
 ```
   
-## Team members 👨‍💻
+## Meet the team 👨‍💻
 fotito
 ## Luis Hidalgo
 ### Age: 16
@@ -67,3 +59,18 @@ A list of all the electrical and mechanical components on the robot.
 |[10K ohm Resistor x1](https://a.co/d/g2p8k1C) |[UTP cable CAT6 ](https://a.co/d/9NCzytp)|[Push button x1](https://a.co/d/8YSMDxr) |
 | <img src="https://github.com/user-attachments/assets/42004542-2963-4c63-9a00-3c3436a9d0dd" width="200"/> | <img src="https://github.com/user-attachments/assets/9305a521-439d-440e-b3a1-d9f97c2a0cd8" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/d0b32f61-361f-4375-b3a1-cdbcc37469d6" alt="Alt 1" width="200"/> |
 |[Fuse Holder Inline screw type x1](https://a.co/d/7VGbSVK) |[Jumper wires x12 ](https://a.co/d/0rLEQiV)|[Ceramic capacitor x3](https://amzn.eu/d/0qPpxa0) |
+
+# Mobility Management ⚙️
+# Power Management 🔋
+# Sense and Object Detection Management 👁️
+
+
+# Overview of our repository 📖
+* [`3D_printables`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/3D_printables)- For our 3d printed resources used on this proyect.
+* [`schemes`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/schemes) - here you can find how all the components are connected.
+* [`src`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/src)- Includes all the codes , open and obstacle challenge, as wel the raspberry pi code and the arduino.
+* [`team photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/team%20photos) - photos of the team on file one formal and a funny one.
+* [`vehicle photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/vehicle%20photos) - photos of every angle of the robot.
+* [`video`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/video) - the link to our youtube channel where you can see our robot in action completing both challenges.
+* `README.md` - Here's all our journey in the development of our robot here we explain every part of the robot making.
+
