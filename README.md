@@ -17,6 +17,16 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 * [`vehicle photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/vehicle%20photos) - photos of every angle of the robot.
 * [`video`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/video) - the link to our youtube channel where you can see our robot in action completing both challenges.
 * `README.md` - Here's all our journey in the development of our robot here we explain every part of the robot making.
+
+# Repo folder structure
+📦 TEKBOT-WEST-WRO-FE
+├── 📁 3D_printables # 3D models ready for printing robot components
+├── 📁 schemes # Diagrams, schematics, and other electrical plans
+├── 📁 src # Source code for robot control and challenge algorithms
+├── 📁 team photos # Photos of the team and related activities
+├── 📁 vehicle photos # Pictures of the robot at different stages and views
+├── 📁 video # Videos of testing, demos, and competition runs
+├── 📄 README.md # Main project documentation and overview
   
 ## Team members 👨‍💻
 fotito
