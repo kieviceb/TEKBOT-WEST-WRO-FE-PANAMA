@@ -35,7 +35,7 @@ fotito
 * [`schemes`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/schemes) - here you can find how all the components are connected.
 * [`src`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/src)- Includes all the codes , open and obstacle challenge, as wel the raspberry pi code and the arduino.
 * [`team photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/team%20photos) - photos of the team on file one formal and a funny one.
-* [`vehicle photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/vehicle%20photos) - photos of every angle of the robot, including our previuos version .
+* [`vehicle photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/vehicle%20photos) - photos of every angle of the robot.
 * [`video`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/video) - the link to our youtube channel where you can see our robot in action completing both challenges.
 * `README.md` - Here's all our journey in the development of our robot here we explain every part of the robot making.
 
