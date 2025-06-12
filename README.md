@@ -53,12 +53,7 @@ A list of all the electrical and mechanical components on the robot.
 | [Arduino NANO RP2040 x1](https://a.co/d/9mUTqVe) |[FUNDUINO kit chassis x1](https://a.co/d/fpJSHg1)|[INIU Slim 10,000mAh Power Bank x1](https://a.co/d/1patlqb) |
 | <img src="https://github.com/user-attachments/assets/0be65d89-2a79-418d-86e4-e2d6fee2a532" width="200"/> |<img src="https://github.com/user-attachments/assets/76266feb-d49a-4219-aae1-4e0dd4bc8ee0" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/47f81a81-a3fc-4954-9094-194a25310c96" alt="Alt 1" width="200"/> |
 |[Geekworm Raspberry Pi Wide Input Voltage Power Management x1](https://www.pololu.com/product/4863)|[MG996R High Torque Metal Gear Servo x1](https://a.co/d/cRVAc0u)|[3.7V Flat Top Lithium Rechargeable Battery x2](https://a.co/d/fZOg5VN)|
-| <img src="https://github.com/user-attachments/assets/1f0c7367-52d3-4165-8ea6-b22f3e88f032" width="200"/> | <img src="https://github.com/user-attachments/assets/4d3086fc-fdd9-4947-800d-46909c961654" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/9ce8ac59-2668-4852-ba10-070150a25bd4" alt="Alt 1" width="200"/> |
-|[Pixy cam v2.1 x1](https://a.co/d/hyOCC5F) |[Electrolytic Capacitor x2](https://a.co/d/2Hp40r2)|[Rocker switch x1](https://a.co/d/dZaNOAK) |
-| <img src="https://github.com/user-attachments/assets/a027eed4-f979-4a64-a0f9-7b02da086671" width="200"/> | <img src="https://github.com/user-attachments/assets/0e4da4f4-ee5b-4876-ae01-5a39e919df58" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/5b3d24e6-3a5f-4243-bc55-937bfcc426c0" alt="Alt 1" width="200"/> |
-|[10K ohm Resistor x1](https://a.co/d/g2p8k1C) |[UTP cable CAT6 ](https://a.co/d/9NCzytp)|[Push button x1](https://a.co/d/8YSMDxr) |
-| <img src="https://github.com/user-attachments/assets/42004542-2963-4c63-9a00-3c3436a9d0dd" width="200"/> | <img src="https://github.com/user-attachments/assets/9305a521-439d-440e-b3a1-d9f97c2a0cd8" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/d0b32f61-361f-4375-b3a1-cdbcc37469d6" alt="Alt 1" width="200"/> |
-|[Fuse Holder Inline screw type x1](https://a.co/d/7VGbSVK) |[Jumper wires x12 ](https://a.co/d/0rLEQiV)|[Ceramic capacitor x3](https://amzn.eu/d/0qPpxa0) |
+
 
 # Mobility Management ⚙️
 # Power Management 🔋
