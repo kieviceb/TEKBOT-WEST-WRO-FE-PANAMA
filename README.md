@@ -54,21 +54,61 @@ A list of all the electrical and mechanical components on the robot.
 | <img src="https://github.com/user-attachments/assets/0be65d89-2a79-418d-86e4-e2d6fee2a532" width="200"/> |<img src="https://github.com/user-attachments/assets/76266feb-d49a-4219-aae1-4e0dd4bc8ee0" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/47f81a81-a3fc-4954-9094-194a25310c96" alt="Alt 1" width="200"/> |
 |[Geekworm Raspberry Pi Wide Input Voltage Power Management x1](https://www.pololu.com/product/4863)|[MG996R High Torque Metal Gear Servo x1](https://a.co/d/cRVAc0u)|[3.7V Flat Top Lithium Rechargeable Battery x2](https://a.co/d/fZOg5VN)|
 
+---
 
-# Mobility Management ⚙️
-# Power Management 🔋
-# Sense and Object Detection 👁️
+## Mobility Management ⚙️
+
+Our robot's mobility system is divided into two main components: **movement** and **steering**.
+
+### Movement
+The robot uses a **DC motor** mounted at the rear, connected to a **shared rear axle** via a mechanical linkage. This ensures both rear wheels rotate together, complying with WRO rules. The motor shaft (D-shaft) is securely coupled to the axle for efficient torque transfer.
+
+The motor is controlled by an **L298N motor driver**, which receives commands from the **Arduino Nano RP2040**.
+
+### Steering
+For steering, we use the **MG996R metal gear servo motor**, known for its high torque and precision. The robot employs an **Ackermann steering system**, included in the Funduino kit, which mimics real vehicle steering geometry for smoother and more accurate turns.
+
+---
+
+## Power Management 🔋
+
+We are transitioning from a power bank to a more integrated and efficient solution using the **Geekworm Raspberry Pi Wide Input Voltage Power Management Module**. This module allows us to:
+
+- Power the **Raspberry Pi** and **camera** directly from a **3.7V Flat Top Lithium Rechargeable Battery** (or a battery pack).
+- Provide stable voltage regulation and protection for the SBC and peripherals.
+- Eliminate the need for bulky external power banks, reducing weight and improving cable management.
+
+The **Arduino Nano RP2040**, **L298N motor driver**, and **MG996R servo motor** are also powered by the same 3.7V lithium batteries, ensuring a unified and compact power system.
+
+This upgrade improves efficiency, reduces power interruptions, and simplifies the robot's electrical layout.
+
+---
+
+## Sense and Object Detection 👁️
+
+Our robot uses **computer vision** to perceive its environment and make autonomous decisions.
+
+### Vision System
+We use the **Microsoft LifeCam HD-3000** webcam in combination with **OpenCV (Open Source Computer Vision Library)**, a powerful toolkit for real-time image processing. This setup enables the robot to:
+
+- Detect and avoid **black walls** on the track.
+- Identify and avoid **obstacles**, including **red and green blocks**.
+- Recognize the **magenta parking spot** and perform parking maneuvers.
+- Count **orange and blue lines** on the mat to track laps (3 total), ensuring compliance with lap-counting requirements.
+
+All image processing is handled on the **Raspberry Pi**, which interprets the camera feed and sends commands to the Arduino for navigation and control.
+
+
+
+# Open Challenge strategy and code explanation
+# Obstacle Challenge strategy and code explanation
+---
+
+Stay tuned for updates as we continue to improve our robot's performance and capabilities!
+
+
 # Open Challenge strategy and code explanation
 # Obstacle Challenge strategy and code explanation
 
 
-
-# Overview of our repository 📖
-* [`3D_printables`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/3D_printables)- For our 3d printed resources used on this proyect.
-* [`schemes`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/schemes) - here you can find how all the components are connected.
-* [`src`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/src)- Includes all the codes , open and obstacle challenge, as wel the raspberry pi code and the arduino.
-* [`team photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/team%20photos) - photos of the team on file one formal and a funny one.
-* [`vehicle photos`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/vehicle%20photos) - photos of every angle of the robot.
-* [`video`](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/video) - the link to our youtube channel where you can see our robot in action completing both challenges.
-* `README.md` - Here's all our journey in the development of our robot here we explain every part of the robot making.
 
