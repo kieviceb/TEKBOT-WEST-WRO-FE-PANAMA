@@ -114,6 +114,8 @@ This setup enables the robot to:
 
 Stay tuned for updates as we continue to improve our robot's performance and capabilities!
 
+# References
+https://www.matthewpeterkelly.com/tutorials/pdControl/index.html#:~:text=A%20proportional%2Dderivative%20(PD),car%20at%20some%20desired%20height
 
 
 
