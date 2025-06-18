@@ -10,7 +10,7 @@
 This is the official repository for TEKBOT WEST, the team participating in the Panama WRO Regional phase to compete for a spot on the national team. Here you'll find everything related to the development of our robot as we strive towards the national and international finals!
 
 
-# Repo folder structure
+# Repo's folder structure
 ```
 📦 TEKBOT-WEST-WRO-FE
 ├── 📁 3D_printables # 3D models ready for printing robot components
@@ -39,7 +39,7 @@ fotito
 
 ## Our Coach
 ## Diego Delgado
-### Age: tweni something
+### Age: 25
 <img src="https://github.com/user-attachments/assets/6424b26b-7c32-4192-8623-f851a1f43a6e8" alt="Imagen 1" width="400">
 
 
@@ -58,6 +58,9 @@ A list of all the electrical and mechanical components on the robot.
 # Mobility Management ⚙️
 # Power Management 🔋
 # Sense and Object Detection 👁️
+# Open Challenge strategy and code explanation
+# Obstacle Challenge strategy and code explanation
+
 
 
 # Overview of our repository 📖
