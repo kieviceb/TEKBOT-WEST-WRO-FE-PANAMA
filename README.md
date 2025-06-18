@@ -56,48 +56,60 @@ A list of all the electrical and mechanical components on the robot.
 
 ---
 
-## Mobility Management ⚙️
+## ⚙️ Mobility Management
 
 Our robot's mobility system is divided into two main components: **movement** and **steering**.
 
 ### Movement
 The robot uses a **DC motor** mounted at the rear, connected to a **shared rear axle** via a mechanical linkage. This ensures both rear wheels rotate together, complying with WRO rules. The motor shaft (D-shaft) is securely coupled to the axle for efficient torque transfer.
 
-The motor is controlled by an **L298N motor driver**, which receives commands from the **Arduino Nano RP2040**.
+The motor is controlled by an **L298N motor driver**, which is connected directly to the **Raspberry Pi**. This allows the Pi to manage motor speed and direction based on real-time vision processing.
 
 ### Steering
 For steering, we use the **MG996R metal gear servo motor**, known for its high torque and precision. The robot employs an **Ackermann steering system**, included in the Funduino kit, which mimics real vehicle steering geometry for smoother and more accurate turns.
 
----
-
-## Power Management 🔋
-
-We are transitioning from a power bank to a more integrated and efficient solution using the **Geekworm Raspberry Pi Wide Input Voltage Power Management Module**. This module allows us to:
-
-- Power the **Raspberry Pi** and **camera** directly from a **3.7V Flat Top Lithium Rechargeable Battery** (or a battery pack).
-- Provide stable voltage regulation and protection for the SBC and peripherals.
-- Eliminate the need for bulky external power banks, reducing weight and improving cable management.
-
-The **Arduino Nano RP2040**, **L298N motor driver**, and **MG996R servo motor** are also powered by the same 3.7V lithium batteries, ensuring a unified and compact power system.
-
-This upgrade improves efficiency, reduces power interruptions, and simplifies the robot's electrical layout.
+The **Arduino Nano RP2040** receives steering commands from the Raspberry Pi and controls the servo motor accordingly.
 
 ---
 
-## Sense and Object Detection 👁️
+## 🔋 Power Management
+
+Our robot uses a dual power system to efficiently manage energy distribution:
+
+- A **power bank** supplies power to the **Raspberry Pi**, the **Microsoft LifeCam HD-3000 webcam**, and the **DC motor** (via the L298N driver). This ensures stable voltage and current for the SBC (Single Board Computer) and high-power components.
+  
+- A set of **3.7V Flat Top Lithium Rechargeable Batteries** powers the **Arduino Nano RP2040** and the **MG996R servo motor**. This separation helps prevent voltage drops and ensures reliable operation of the control and actuation systems.
+
+We are planning to replace the power bank with the **Geekworm Raspberry Pi Wide Input Voltage Power Management Module**, which will allow us to:
+
+- Power the Raspberry Pi and camera directly from the 3.7V lithium batteries.
+- Provide regulated and protected power delivery to the SBC.
+- Reduce weight and improve cable management by eliminating the external power bank.
+
+This upgrade will result in a more compact, efficient, and reliable power system.
+
+---
+
+## 👁️ Sense and Object Detection
 
 Our robot uses **computer vision** to perceive its environment and make autonomous decisions.
 
 ### Vision System
-We use the **Microsoft LifeCam HD-3000** webcam in combination with **OpenCV (Open Source Computer Vision Library)**, a powerful toolkit for real-time image processing. This setup enables the robot to:
+We use the **Microsoft LifeCam HD-3000** webcam in combination with **OpenCV (Open Source Computer Vision Library)**, a powerful toolkit for real-time image processing. All image processing is handled on the **Raspberry Pi**, which interprets the camera feed and:
+
+- Sends **steering commands** to the **Arduino Nano RP2040**, which controls the MG996R servo motor.
+- Directly controls the **DC motor** through the **L298N motor driver**.
+
+This setup enables the robot to:
 
 - Detect and avoid **black walls** on the track.
 - Identify and avoid **obstacles**, including **red and green blocks**.
 - Recognize the **magenta parking spot** and perform parking maneuvers.
 - Count **orange and blue lines** on the mat to track laps (3 total), ensuring compliance with lap-counting requirements.
 
-All image processing is handled on the **Raspberry Pi**, which interprets the camera feed and sends commands to the Arduino for navigation and control.
+---
 
+Stay tuned for updates as we continue to improve our robot's performance and capabilities!
 
 
 # Open Challenge strategy and code explanation
@@ -106,9 +118,6 @@ All image processing is handled on the **Raspberry Pi**, which interprets the ca
 
 Stay tuned for updates as we continue to improve our robot's performance and capabilities!
 
-
-# Open Challenge strategy and code explanation
-# Obstacle Challenge strategy and code explanation
 
 
 
