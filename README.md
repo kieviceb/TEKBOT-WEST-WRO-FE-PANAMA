@@ -107,10 +107,6 @@ This setup enables the robot to:
 - Recognize the **magenta parking spot** and perform parking maneuvers.
 - Count **orange and blue lines** on the mat to track laps (3 total), ensuring compliance with lap-counting requirements.
 
----
-
-Stay tuned for updates as we continue to improve our robot's performance and capabilities!
-
 
 # Open Challenge strategy and code explanation
 # Obstacle Challenge strategy and code explanation
