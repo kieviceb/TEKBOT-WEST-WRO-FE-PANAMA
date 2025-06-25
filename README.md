@@ -23,10 +23,11 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 ```
   
 ## Meet the team 👨‍💻
-fotito
+https://github.com/user-attachments/assets/f9014af3-5386-4c66-9132-c936970431cb)
+
 ## Luis Hidalgo
 ### Age: 16
-<img src="https://github.com/user-attachments/assets/c2d76d96-894a-4840-8a7d-57509f288950" alt="Imagen 1" width="400">
+
 
 ## Ericka Ceballos
 ### Age: 18
@@ -34,13 +35,13 @@ fotito
 
 ## Patric Sutherland
 ### Age: 17
-<img src="https://github.com/user-attachments/assets/825efd1b-db29-480d-b972-22ae3139cd18" alt="Imagen 1" width="400">
+
 
 
 ## Our Coach
 ## Diego Delgado
 ### Age: 25
-<img src="https://github.com/user-attachments/assets/6424b26b-7c32-4192-8623-f851a1f43a6e8" alt="Imagen 1" width="400">
+
 
 
 # Components 🧱
