@@ -24,7 +24,7 @@ This is the official repository for TEKBOT WEST, the team participating in the P
   
 ## Meet the team 👨‍💻
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/bbfb9286-652d-4064-b1f4-a33967fa7d1e" width="300">
+  <img src="https://github.com/user-attachments/assets/bbfb9286-652d-4064-b1f4-a33967fa7d1e" width="700">
 </p>
 
 
