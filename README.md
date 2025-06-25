@@ -26,27 +26,27 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 <p align="center">
   <img src="https://github.com/user-attachments/assets/bbfb9286-652d-4064-b1f4-a33967fa7d1e" width="700">
 </p>
+## 👤 Luis Hidalgo  
+### Age: 16  
+Luis is the team’s **electrician and hardware specialist**. He handles wiring, sensors, and all things related to power and circuitry. Luis brings hands-on experience from previous **WRO competitions**, contributing to the robot's reliability and performance.
 
+---
 
+## 👩‍💻 Ericka Ceballos  
+### Age: 18  
+Ericka is the team’s **programmer**, responsible for writing and debugging the robot's code. She ensures that the robot can make real-time decisions and execute tasks with precision. Ericka has participated in **WRO** and brings her technical and problem-solving skills to every challenge.
 
-## Luis Hidalgo
-### Age: 16
+---
 
+## 🎨 Patrick Sutherland  
+### Age: 17  
+Patrick serves as the **designer** of the team. He focuses on the mechanical layout and overall functionality of the robot, balancing creativity with engineering. Patrick is also a returning **WRO participant**, constantly improving the robot's design through testing and iteration.
 
-## Ericka Ceballos
-### Age: 18
+---
 
-
-## Patric Sutherland
-### Age: 17
-
-
-
-## Our Coach
-## Diego Delgado
-### Age: 25
-
-
+## 🧠 Our Coach — Diego Delgado  
+### Age: 25  
+Diego is the team’s **coach and mentor**, guiding the team through strategy, planning, and technical reviews. He is the **founder of Tekbot**, an organization dedicated to promoting STEM and robotics education. Diego is a **former WRO participant** himself and has also coached teams in **FRC**, offering a broad perspective and deep expertise in robotics education.
 
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
