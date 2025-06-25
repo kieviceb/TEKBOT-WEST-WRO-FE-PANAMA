@@ -21,6 +21,7 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 ├── 📁 video # Videos of testing, demos, and competition runs
 ├── 📄 README.md # Main project documentation and overview
 ```
+---
   
 ## Meet the team 👨‍💻
 <p align="center">
@@ -31,30 +32,26 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 ### Age: 16  
 Luis is the team’s **electrician and hardware specialist**. He handles wiring, sensors, and all things related to power and circuitry. Luis brings hands-on experience from previous **WRO competitions**, contributing to the robot's reliability and performance.
 
----
-
 ## 👩‍💻 Ericka Ceballos  
 ### Age: 18  
 Ericka is the team’s **programmer**, responsible for writing and debugging the robot's code. She ensures that the robot can make real-time decisions and execute tasks with precision. Ericka has participated in **WRO** and brings her technical and problem-solving skills to every challenge.
-
----
 
 ## 🎨 Patrick Sutherland  
 ### Age: 17  
 Patrick serves as the **designer** of the team. He focuses on the mechanical layout and overall functionality of the robot, balancing creativity with engineering. Patrick is also a returning **WRO participant**, constantly improving the robot's design through testing and iteration.
 
----
-
 ## 🧠 Our Coach — Diego Delgado  
 ### Age: 25  
 Diego is the team’s **coach and mentor**, guiding the team through strategy, planning, and technical reviews. He is the **founder of Tekbot**, an organization dedicated to promoting STEM and robotics education. Diego is a **former WRO participant** himself and has also coached teams in **FRC**, offering a broad perspective and deep expertise in robotics education.
+
+---
 
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
 
 | <img src="https://github.com/user-attachments/assets/719a51d8-4b14-402d-a462-ba1e4b071c2c" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3641b928-34c5-4d97-861c-fa08d40c9faa" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/19b0baad-f049-460a-b44f-da65eaff72fe" alt="Alt 1" width="200"/> | 
 | :------------: |:-------------:| :------------:|
-|[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/42jYlB6)|[TB6612 motor driverr x1](https://a.co/d/fpJSHg1)|
+|[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/42jYlB6)|[TB6612 motor driver x1](https://a.co/d/fpJSHg1)|
 | <img src="https://github.com/user-attachments/assets/5b0ffc5d-ce02-4620-9849-15fdce566702" width="200"/> | <img src="https://github.com/user-attachments/assets/d4170adc-23b9-446f-bac0-1c50b966e00f" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/b9cfe245-e774-4e4c-aed9-0e2c7445bf3c" alt="Alt 1" width="200"/> |
 | [Arduino NANO RP2040 x1](https://a.co/d/9mUTqVe) |[FUNDUINO kit chassis x1](https://a.co/d/fpJSHg1)|[INIU Slim 10,000mAh Power Bank x1](https://a.co/d/1patlqb) |
 | <img src="https://github.com/user-attachments/assets/0be65d89-2a79-418d-86e4-e2d6fee2a532" width="200"/> |<img src="https://github.com/user-attachments/assets/76266feb-d49a-4219-aae1-4e0dd4bc8ee0" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/47f81a81-a3fc-4954-9094-194a25310c96" alt="Alt 1" width="200"/> |
@@ -116,6 +113,7 @@ This setup enables the robot to:
 
 # Open Challenge strategy and code explanation
 # Obstacle Challenge strategy and code explanation
+
 ---
 
 Stay tuned for updates as we continue to improve our robot's performance and capabilities!
