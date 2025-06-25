@@ -52,9 +52,9 @@ Diego is the team’s **coach and mentor**, guiding the team through strategy, p
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
 
-| <img src="https://github.com/user-attachments/assets/719a51d8-4b14-402d-a462-ba1e4b071c2c" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3641b928-34c5-4d97-861c-fa08d40c9faa" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/4adda023-cb88-4a00-9a89-d7be3f75bf26" alt="Alt 1" width="200"/> | 
+| <img src="https://github.com/user-attachments/assets/719a51d8-4b14-402d-a462-ba1e4b071c2c" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3641b928-34c5-4d97-861c-fa08d40c9faa" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/19b0baad-f049-460a-b44f-da65eaff72fe" alt="Alt 1" width="200"/> | 
 | :------------: |:-------------:| :------------:|
-|[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/42jYlB6)|[L298N motor driver x1](https://a.co/d/e4jJKCS)|
+|[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/42jYlB6)|[TB6612 motor driverr x1](https://a.co/d/fpJSHg1)|
 | <img src="https://github.com/user-attachments/assets/5b0ffc5d-ce02-4620-9849-15fdce566702" width="200"/> | <img src="https://github.com/user-attachments/assets/d4170adc-23b9-446f-bac0-1c50b966e00f" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/b9cfe245-e774-4e4c-aed9-0e2c7445bf3c" alt="Alt 1" width="200"/> |
 | [Arduino NANO RP2040 x1](https://a.co/d/9mUTqVe) |[FUNDUINO kit chassis x1](https://a.co/d/fpJSHg1)|[INIU Slim 10,000mAh Power Bank x1](https://a.co/d/1patlqb) |
 | <img src="https://github.com/user-attachments/assets/0be65d89-2a79-418d-86e4-e2d6fee2a532" width="200"/> |<img src="https://github.com/user-attachments/assets/76266feb-d49a-4219-aae1-4e0dd4bc8ee0" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/47f81a81-a3fc-4954-9094-194a25310c96" alt="Alt 1" width="200"/> |
