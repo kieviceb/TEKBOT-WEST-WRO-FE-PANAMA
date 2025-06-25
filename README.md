@@ -26,6 +26,7 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 <p align="center">
   <img src="https://github.com/user-attachments/assets/bbfb9286-652d-4064-b1f4-a33967fa7d1e" width="700">
 </p>
+
 ## 👤 Luis Hidalgo  
 ### Age: 16  
 Luis is the team’s **electrician and hardware specialist**. He handles wiring, sensors, and all things related to power and circuitry. Luis brings hands-on experience from previous **WRO competitions**, contributing to the robot's reliability and performance.
