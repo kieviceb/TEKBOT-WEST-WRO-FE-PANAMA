@@ -24,8 +24,9 @@ This is the official repository for TEKBOT WEST, the team participating in the P
   
 ## Meet the team 👨‍💻
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/f9014af3-5386-4c66-9132-c936970431cb" alt="TEKBOT (1)">
+  https://github.com/user-attachments/assets/f9014af3-5386-4c66-9132-c936970431cb
 </p>
+
 ## Luis Hidalgo
 ### Age: 16
 
