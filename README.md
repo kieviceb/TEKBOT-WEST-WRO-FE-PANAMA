@@ -90,7 +90,7 @@ Teams are evaluated based on their robot’s **accuracy**, **speed**, and the qu
 > [WRO 2025 Future Engineers Rules (PDF)](https://fundesteam.nyc3.cdn.digitaloceanspaces.com/FutureEngineers/WRO-2025-FE-Reglas%20Generales.pdf)
 
 
-## ⚙️ Mobility Management
+# ⚙️ Mobility Management
 
 Our robot's mobility system is divided into two main components: **movement** and **steering**.
 
@@ -106,7 +106,7 @@ The **Arduino Nano RP2040** receives steering commands from the Raspberry Pi and
 
 ---
 
-## 🔋 Power Management
+# 🔋 Power Management
 
 Our robot uses a dual power system to efficiently manage energy distribution:
 
@@ -124,7 +124,7 @@ This upgrade will result in a more compact, efficient, and reliable power system
 
 ---
 
-## 👁️ Sense and Object Detection
+# 👁️ Sense and Object Detection
 
 Our robot uses **computer vision** to perceive its environment and make autonomous decisions.
 
