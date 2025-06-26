@@ -59,6 +59,37 @@ A list of all the electrical and mechanical components on the robot.
 
 ---
 
+## Future Engineers Challenge Overview
+
+The **WRO 2025 Future Engineers challenge** challenges teams to design and build a fully autonomous robot capable of navigating a dynamic and randomized racetrack. Using a combination of sensors, computer vision, and advanced control algorithms, the robot must adapt to changing obstacles, follow predefined driving rules, and demonstrate precise maneuvering skills.
+
+### 📌 Competition Format
+
+- **🏁 Open Challenge:**  
+  The robot must complete **three (3) laps** around a track where obstacles and track elements are randomly placed, requiring real-time adaptation.
+
+- **🚦 Obstacle Challenge:**  
+  The robot must detect and respond correctly to randomly positioned colored markers:  
+  - 🟥 **Red signs** → Robot must drive on the right side of the lane.  
+  - 🟩 **Green signs** → Robot must drive on the left side of the lane.
+
+  After completing the laps, the robot must find a designated parking zone and perform a precise **parallel parking maneuver** within a confined space, adding an additional technical challenge.
+
+### 📑 Documentation Requirements
+
+Each team is required to maintain a **public GitHub repository** documenting their engineering design process, technical decisions, robot design, and source code. This encourages transparency, collaboration, and learning within the robotics community.
+
+### 🏆 Scoring & Evaluation
+
+Teams are evaluated based on their robot’s **accuracy**, **speed**, and the quality of their **technical documentation**. Points are awarded to teams that effectively balance performance, adaptability to randomized conditions, and innovation in their approach. This challenge promotes not only technical skills in robotics and programming but also problem-solving, teamwork, and creative engineering.
+
+---
+
+> **Note:**  
+> For detailed rules and regulations, please refer to the official WRO 2025 Future Engineers document:  
+> [WRO 2025 Future Engineers Rules PANAMA ONLY (PDF)](https://fundesteam.nyc3.cdn.digitaloceanspaces.com/FutureEngineers/WRO-2025-FE-Reglas%20Generales.pdf)
+
+
 ## ⚙️ Mobility Management
 
 Our robot's mobility system is divided into two main components: **movement** and **steering**.
