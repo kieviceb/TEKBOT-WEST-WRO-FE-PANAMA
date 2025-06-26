@@ -54,8 +54,8 @@ A list of all the electrical and mechanical components on the robot.
 |[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/42jYlB6)|[TB6612 motor driver x1](https://a.co/d/fpJSHg1)|
 | <img src="https://github.com/user-attachments/assets/5b0ffc5d-ce02-4620-9849-15fdce566702" width="200"/> | <img src="https://github.com/user-attachments/assets/d4170adc-23b9-446f-bac0-1c50b966e00f" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/b9cfe245-e774-4e4c-aed9-0e2c7445bf3c" alt="Alt 1" width="200"/> |
 | [Arduino NANO RP2040 x1](https://a.co/d/9mUTqVe) |[FUNDUINO kit chassis x1](https://a.co/d/fpJSHg1)|[INIU Slim 10,000mAh Power Bank x1](https://a.co/d/1patlqb) |
-| <img src="https://github.com/user-attachments/assets/0be65d89-2a79-418d-86e4-e2d6fee2a532" width="200"/> |<img src="https://github.com/user-attachments/assets/76266feb-d49a-4219-aae1-4e0dd4bc8ee0" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/47f81a81-a3fc-4954-9094-194a25310c96" alt="Alt 1" width="200"/> |
-|[Geekworm Raspberry Pi Wide Input Voltage Power Management x1](https://www.pololu.com/product/4863)|[MG996R High Torque Metal Gear Servo x1](https://a.co/d/cRVAc0u)|[3.7V Flat Top Lithium Rechargeable Battery x2](https://a.co/d/fZOg5VN)|
+| <img src="https://github.com/user-attachments/assets/0be65d89-2a79-418d-86e4-e2d6fee2a532" width="200"/> |<img src="https://github.com/user-attachments/assets/76266feb-d49a-4219-aae1-4e0dd4bc8ee0" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/5e7e2f9c-ce09-4b04-8cd1-b270fe98c6da" alt="Alt 1" width="200"/> |
+|[Geekworm Raspberry Pi Wide Input Voltage Power Management x1](https://www.pololu.com/product/4863)|[MG996R High Torque Metal Gear Servo x1](https://a.co/d/cRVAc0u)|[STEREN Li-ion 2800 mAh Rechargeable Battery x2](https://www.steren.com.pa/bateria-recargable-li-ion-2800-mah-tipo-18650-1.html)|
 
 ---
 
