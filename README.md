@@ -59,7 +59,7 @@ A list of all the electrical and mechanical components on the robot.
 
 ---
 
-## Future Engineers Challenge Overview
+# Future Engineers Challenge Overview
 
 The **WRO 2025 Future Engineers challenge** challenges teams to design and build a fully autonomous robot capable of navigating a dynamic and randomized racetrack. Using a combination of sensors, computer vision, and advanced control algorithms, the robot must adapt to changing obstacles, follow predefined driving rules, and demonstrate precise maneuvering skills.
 
@@ -86,8 +86,8 @@ Teams are evaluated based on their robot’s **accuracy**, **speed**, and the qu
 ---
 
 > **Note:**  
-> For detailed rules and regulations, please refer to the official WRO 2025 Future Engineers document:  
-> [WRO 2025 Future Engineers Rules PANAMA ONLY (PDF)](https://fundesteam.nyc3.cdn.digitaloceanspaces.com/FutureEngineers/WRO-2025-FE-Reglas%20Generales.pdf)
+> For detailed rules and regulations(PANAMA ONLY), please refer to the official WRO 2025 Future Engineers document:  
+> [WRO 2025 Future Engineers Rules (PDF)](https://fundesteam.nyc3.cdn.digitaloceanspaces.com/FutureEngineers/WRO-2025-FE-Reglas%20Generales.pdf)
 
 
 ## ⚙️ Mobility Management
@@ -152,5 +152,28 @@ Stay tuned for updates as we continue to improve our robot's performance and cap
 # References
 https://www.matthewpeterkelly.com/tutorials/pdControl/index.html#:~:text=A%20proportional%2Dderivative%20(PD),car%20at%20some%20desired%20height
 
+## 📜 License
+
+MIT License
+
+Copyright (c) 2025 Ericka Ceballos
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 
