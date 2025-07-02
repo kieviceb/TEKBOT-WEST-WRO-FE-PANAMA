@@ -86,9 +86,12 @@ Teams are evaluated based on their robot’s **accuracy**, **speed**, and the qu
 
 ---
 
-> **Note:**  
-> For detailed rules and regulations(PANAMA ONLY), please refer to the official WRO Panama 2025 Future Engineers document:  
+
+> [!NOTE]
+> For detailed rules and regulations (PANAMA ONLY), please refer to the official WRO Panama 2025 Future Engineers document:  
 > [WRO 2025 Future Engineers Rules (PDF)](https://fundesteam.nyc3.cdn.digitaloceanspaces.com/FutureEngineers/WRO-2025-FE-Reglas%20Generales.pdf)
+
+<br>
 
 
 # ⚙️ Mobility Management
