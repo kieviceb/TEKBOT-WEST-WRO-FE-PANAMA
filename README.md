@@ -42,7 +42,7 @@ Patrick serves as the **designer** of the team. He focuses on the mechanical lay
 
 ## 🧠 Our Coach — Diego Delgado  
 ### Age: 25  
-Diego is the team’s **coach and mentor**, guiding the team through strategy, planning, and technical reviews. He is the **founder of Tekbot**, an organization dedicated to promoting STEM and robotics education. Diego is a **former WRO participant** himself and has also coached teams in **FRC**, offering a broad perspective and deep expertise in robotics education.
+Diego is the team’s **coach and mentor**, guiding the team through strategy, planning, and technical reviews. He is the **founder of Tekbot**, an organization dedicated to promoting STEM and robotics education for children and young people. Diego is a **former WRO participant** himself and has also coached teams in **FRC**, offering a broad perspective and deep expertise in robotics education.
 
 ---
 
