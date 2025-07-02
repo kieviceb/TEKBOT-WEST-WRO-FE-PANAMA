@@ -146,8 +146,41 @@ This setup enables the robot to:
 - Count **orange and blue lines** on the mat to track laps (3 total), ensuring compliance with lap-counting requirements.
 
 
-# Open Challenge strategy and code explanation
-# Obstacle Challenge strategy and code explanation
+# Challenge Strategies
+
+## Open Challenge Strategy
+
+The Open Challenge focuses on detecting colored lines—specifically **orange** and **blue**—on the floor and reacting by steering the robot accordingly:
+
+- The camera captures a Region of Interest (ROI) near the floor to detect these colored lines.
+- HSV color filtering isolates orange and blue colors in the ROI.
+- When an orange line is detected, the robot commands the servo to turn **120° to the right** and temporarily increases motor speed.
+- When a blue line is detected, the robot commands the servo to turn **58° to the left** and also increases motor speed.
+- If no colored line is detected, the servo centers at **90°**, and the robot moves at a default speed.
+- Turns last for a fixed duration (~1.3 seconds), after which the servo returns to center and speed reduces to default.
+- Visual feedback is provided via OpenCV windows showing the camera feed and detected masks.
+- The motor is continuously driven forward except when stopping is needed.
+- This strategy allows the robot to smoothly follow colored paths by combining real-time color detection with timed servo steering commands.
+
+## Obstacle Challenge Strategy
+
+The Obstacle Challenge code relies on detecting colored blocks—**red** and **green**—using the camera, and responding with precise servo movements to avoid collisions:
+
+- The camera captures a region (ROI) where colored blocks appear.
+- HSV filtering identifies red and green blocks.
+- The program calculates the position (center X coordinate) and size (pixel area) of these blocks.
+- When a red block is detected with enough size, the robot initiates a **right turn** by commanding the servo to angle **120°**.
+- When a green block is detected, it initiates a **left turn** with servo angle **58°**.
+- The robot **continues to turn until each block moves past a predefined horizontal limit** (an X-coordinate on the frame), ensuring the block is completely avoided before resuming a straight path.  <img src="https://github.com/user-attachments/assets/7b70ce4a-0ba3-4e91-924a-d9df1eb91ae7" alt="Example image" width="300" />
+- Turning state (`girando`) tracks if the robot is currently turning to prevent conflicting commands.           
+- The robot uses a black line detection ROI to keep track of the floor line and assist navigation while turning.
+- Yellow lines are detected to count how many have been crossed; the robot stops after detecting **12** yellow lines, indicating the end of the course.
+- The servo command is sent as an angle string to the Arduino, which moves the servo accordingly.
+- The motor moves forward continuously unless stopped by the yellow line count condition.
+- The system uses visual markers and debug prints for easy monitoring.
+
+This obstacle avoidance strategy combines color-based object detection with line following and a servo-actuated steering system to navigate safely and complete the obstacle course.
+
 
 ---
 
