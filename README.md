@@ -14,11 +14,11 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 ```
 📦 TEKBOT-WEST-WRO-FE
 ├── 📁 3D_printables # 3D models ready for printing robot components
-├── 📁 schemes # Diagrams, schematics, and other electrical plans
+├── 📁 schemes # Wiring and schematic diagram
 ├── 📁 src # Source code for robot control and challenge algorithms
-├── 📁 team photos # Photos of the team and related activities
-├── 📁 vehicle photos # Pictures of the robot at different stages and views
-├── 📁 video # Videos of testing, demos, and competition runs
+├── 📁 team photos # Photos of the team 
+├── 📁 vehicle photos # Pictures of the robot at different views
+├── 📁 video # Video of testing competition runs
 ├── 📄 README.md # Main project documentation and overview
 ```
 ---
@@ -45,7 +45,16 @@ Patrick serves as the **designer** of the team. He focuses on the mechanical lay
 Diego is the team’s **coach and mentor**, guiding the team through strategy, planning, and technical reviews. He is the **founder of Tekbot**, an organization dedicated to promoting STEM and robotics education for children and young people. Diego is a **former WRO participant** himself and has also coached teams in **FRC**, offering a broad perspective and deep expertise in robotics education.
 
 ---
+## Vehicle Photos 📸
 
+| Front           | Right       | Back      |
+|:---------------:|:-----------:|:---------:|
+| <img width="270" alt="front" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> |<img width="270" alt="front" src="https://github.com/user-attachments/assets/0d997b9a-8e08-4761-a76c-a5333d2de223"> |  <img width="270" alt="front" src="https://github.com/user-attachments/assets/6c593234-e3ec-4686-a9a8-bdd1bfbeefac"> |
+| Left          | Top       | Bottom     |
+|<img width="270" alt="front" src="https://github.com/user-attachments/assets/b835d64c-79fb-4abb-b9a4-92445bec3d5b">| <img width="270" alt="front" src="https://github.com/user-attachments/assets/837ce766-5ce4-4726-8e1b-41b85ca31dbd"> | <img width="270" alt="front" src="https://github.com/user-attachments/assets/db67a2cb-4798-4c9f-8c6b-0a57b5aee964">|
+
+<br>
+ <br>
 
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
