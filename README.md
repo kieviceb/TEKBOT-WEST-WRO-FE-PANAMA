@@ -73,6 +73,13 @@ A list of all the electrical and mechanical components on the robot.
 > Activating them is planned as a future improvement.
 >
 
+# ⚡Circuit diagram
+
+![1](https://github.com/user-attachments/assets/d847c053-dc1a-4490-90ae-936d9f6d7b5f)
+> [!NOTE]
+> For scehamtic diagram as well in fritzing and PNG format
+> [SCHEMES](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/schemes)
+
 --- 
 
 # Future Engineers Challenge Overview
