@@ -45,11 +45,11 @@ Patrick serves as the **designer** of the team. He focuses on the mechanical lay
 Diego is the team’s **coach and mentor**, guiding the team through strategy, planning, and technical reviews. He is the **founder of Tekbot**, an organization dedicated to promoting STEM and robotics education for children and young people. Diego is a **former WRO participant** himself and has also coached teams in **FRC**, offering a broad perspective and deep expertise in robotics education.
 
 ---
-## Vehicle Photos 📸
+# Vehicle Photos 📸
 
 | Front           | Right       | Back      |
 |:---------------:|:-----------:|:---------:|
-| <img width="270" alt="front" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> |<img width="270" alt="front" src="https://github.com/user-attachments/assets/0d997b9a-8e08-4761-a76c-a5333d2de223"> |  <img width="270" alt="front" src="https://github.com/user-attachments/assets/6c593234-e3ec-4686-a9a8-bdd1bfbeefac"> |
+| <img width="270" alt="front" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> |<img width="270" alt="front" src="https://github.com/user-attachments/assets/98f60e79-1afc-43a9-aa50-4e2e825715e4"> |  <img width="270" alt="front" src="https://github.com/user-attachments/assets/6c593234-e3ec-4686-a9a8-bdd1bfbeefac"> |
 | Left          | Top       | Bottom     |
 |<img width="270" alt="front" src="https://github.com/user-attachments/assets/b835d64c-79fb-4abb-b9a4-92445bec3d5b">| <img width="270" alt="front" src="https://github.com/user-attachments/assets/837ce766-5ce4-4726-8e1b-41b85ca31dbd"> | <img width="270" alt="front" src="https://github.com/user-attachments/assets/db67a2cb-4798-4c9f-8c6b-0a57b5aee964">|
 
@@ -94,7 +94,6 @@ Each team is required to maintain a **public GitHub repository** documenting the
 Teams are evaluated based on their robot’s **accuracy**, **speed**, and the quality of their **technical documentation**. Points are awarded to teams that effectively balance performance, adaptability to randomized conditions, and innovation in their approach. This challenge promotes not only technical skills in robotics and programming but also problem-solving, teamwork, and creative engineering.
 
 ---
-
 
 > [!NOTE]
 > For detailed rules and regulations (PANAMA ONLY), please refer to the official WRO Panama 2025 Future Engineers document:  
@@ -180,7 +179,10 @@ The Obstacle Challenge code relies on detecting colored blocks—**red** and **g
 - The program calculates the position (center X coordinate) and size (pixel area) of these blocks.
 - When a red block is detected with enough size, the robot initiates a **right turn** by commanding the servo to angle **120°**.
 - When a green block is detected, it initiates a **left turn** with servo angle **58°**.
-- The robot **continues to turn until each block moves past a predefined horizontal limit** (an X-coordinate on the frame), ensuring the block is completely avoided before resuming a straight path.  <img src="https://github.com/user-attachments/assets/7b70ce4a-0ba3-4e91-924a-d9df1eb91ae7" alt="Example image" width="300" />
+- The robot **continues to turn until each block moves past a predefined horizontal limit** (an X-coordinate on the frame), ensuring the block is completely avoided before resuming a straight path.
+   <div align="center">
+  <img src="https://github.com/user-attachments/assets/7b70ce4a-0ba3-4e91-924a-d9df1eb91ae7" alt="Example image" width="300" />
+</div>
 - Turning state (`girando`) tracks if the robot is currently turning to prevent conflicting commands.           
 - The robot uses a black line detection ROI to keep track of the floor line and assist navigation while turning.
 - Yellow lines are detected to count how many have been crossed; the robot stops after detecting **12** yellow lines, indicating the end of the course.
@@ -189,7 +191,6 @@ The Obstacle Challenge code relies on detecting colored blocks—**red** and **g
 - The system uses visual markers and debug prints for easy monitoring.
 
 This obstacle avoidance strategy combines color-based object detection with line following and a servo-actuated steering system to navigate safely and complete the obstacle course.
-
 
 ---
 
