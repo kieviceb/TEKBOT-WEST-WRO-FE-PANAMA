@@ -10,7 +10,7 @@
 This is the official repository for TEKBOT WEST, the team participating in the Panama WRO Regional phase to compete for a spot on the national team. Here you'll find everything related to the development of our robot as we strive towards the national and international finals!
 
 
-# Repo's folder structure
+# Repo's folder structure/overview
 ```
 📦 TEKBOT-WEST-WRO-FE
 ├── 📁 3D_printables # 3D models ready for printing robot components
@@ -19,7 +19,7 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 ├── 📁 team photos # Photos of the team 
 ├── 📁 vehicle photos # Pictures of the robot at different views
 ├── 📁 video # Video of testing competition runs
-├── 📄 README.md # Main project documentation and overview
+├── 📄 README.md # Main project documentation
 ```
 ---
   
@@ -236,8 +236,9 @@ This obstacle avoidance strategy combines color-based object detection with line
 Stay tuned for updates as we continue to improve our robot's performance and capabilities!
 
 # References
-https://www.matthewpeterkelly.com/tutorials/pdControl/index.html#:~:text=A%20proportional%2Dderivative%20(PD),car%20at%20some%20desired%20height
-https://nerdvana.ro/wro-fe/
+- https://nerdvana.ro/wro-fe/
+- https://markdownlivepreview.com/
+- 
 
 ## 📜 License
 
