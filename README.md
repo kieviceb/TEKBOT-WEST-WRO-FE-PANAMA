@@ -57,15 +57,23 @@ Diego is the team’s **coach and mentor**, guiding the team through strategy, p
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
 
-| <img src="https://github.com/user-attachments/assets/719a51d8-4b14-402d-a462-ba1e4b071c2c" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3641b928-34c5-4d97-861c-fa08d40c9faa" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/19b0baad-f049-460a-b44f-da65eaff72fe" alt="Alt 1" width="200"/> | 
+| <img src="https://github.com/user-attachments/assets/719a51d8-4b14-402d-a462-ba1e4b071c2c" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3641b928-34c5-4d97-861c-fa08d40c9faa" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3d5651d3-c8fe-4935-9561-6ca9d9c87a76" alt="Alt 1" width="200"/> | 
 | :------------: |:-------------:| :------------:|
-|[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/42jYlB6)|[TB6612 motor driver x1](https://a.co/d/fpJSHg1)|
+|[Raspberry Pi 5 - 8GB RAM x1](https://store-usa.arduino.cc/products/arduino-nano?srsltid=AfmBOooU4-IrktQwXymxJgaV7MZPj3cBWDjg6AjQwBmYoQw8es2bz9ex)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/42jYlB6)|[L298N motor driver x1](https://www.steren.com.pa/tarjeta-para-control-de-motores-cc-l298n.html)|
 | <img src="https://github.com/user-attachments/assets/5b0ffc5d-ce02-4620-9849-15fdce566702" width="200"/> | <img src="https://github.com/user-attachments/assets/d4170adc-23b9-446f-bac0-1c50b966e00f" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/b9cfe245-e774-4e4c-aed9-0e2c7445bf3c" alt="Alt 1" width="200"/> |
 | [Arduino NANO RP2040 x1](https://a.co/d/9mUTqVe) |[FUNDUINO kit chassis x1](https://a.co/d/fpJSHg1)|[INIU Slim 10,000mAh Power Bank x1](https://a.co/d/1patlqb) |
-| <img src="https://github.com/user-attachments/assets/0be65d89-2a79-418d-86e4-e2d6fee2a532" width="200"/> |<img src="https://github.com/user-attachments/assets/77157511-58ff-4ee8-9977-d3b53d906af6" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/86d8bf70-708b-426f-896a-9283a74d13df" alt="Alt 1" width="200"/> |
-|[Geekworm Raspberry Pi Wide Input Voltage Power Management x1](https://www.pololu.com/product/4863)|[MG996R High Torque Metal Gear Servo x1](https://a.co/d/cRVAc0u)|[STEREN Li-ion 2800 mAh Rechargeable Battery x2](https://www.steren.com.pa/bateria-recargable-li-ion-2800-mah-tipo-18650-1.html)|
+| <img src="https://github.com/user-attachments/assets/8002e73e-910a-462e-b991-5cd5c858e316" width="200"/> |<img src="https://github.com/user-attachments/assets/77157511-58ff-4ee8-9977-d3b53d906af6" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/86d8bf70-708b-426f-896a-9283a74d13df" alt="Alt 1" width="200"/> |
+|[Jumper wires](https://a.co/d/cw9IdJk)|[MG996R High Torque Metal Gear Servo x1](https://a.co/d/cRVAc0u)|[STEREN Li-ion 2800 mAh Rechargeable Battery x3](https://www.steren.com.pa/bateria-recargable-li-ion-2800-mah-tipo-18650-1.html)|
+| <img src="https://github.com/user-attachments/assets/e9f54336-7c3e-4f5c-9fd6-187f679f36c4" width="200"/> |<img src="https://github.com/user-attachments/assets/9070d3fd-e59f-4762-a41c-219a8f243521" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/e4f5aa32-4f95-4007-bf7e-19fbd9c0b517" alt="Alt 1" width="200"/> |
+|[Infrared Proximity Distance Sensor x3](https://a.co/d/d245jBL)|[Cable Clamp Connectors](https://a.co/d/cV5jVKI)|[Silicone Hook Up Wire](https://a.co/d/fEKUibh)|
 
----
+> [!WARNING]
+>
+> Our robot has infrared sensors connected, but they are not used in this regional competition.  
+> Activating them is planned as a future improvement.
+>
+
+--- 
 
 # Future Engineers Challenge Overview
 
@@ -114,25 +122,54 @@ For steering, we use the **MG996R metal gear servo motor**, known for its high t
 
 The **Arduino Nano RP2040** receives steering commands from the Raspberry Pi and controls the servo motor accordingly.
 
----
-
 # 🔋 Power Management
 
-Our robot uses a dual power system to efficiently manage energy distribution:
+Our robot uses a well-organized power system to ensure stable and efficient energy distribution:
 
-- A **power bank** supplies power to the **Raspberry Pi**, the **Microsoft LifeCam HD-3000 webcam**, and the **DC motor** (via the L298N driver). This ensures stable voltage and current for the SBC (Single Board Computer) and high-power components.
-  
-- A set of **3.7V Flat Top Lithium Rechargeable Batteries** powers the **Arduino Nano RP2040** and the **MG996R servo motor**. This separation helps prevent voltage drops and ensures reliable operation of the control and actuation systems.
+- A **power bank** supplies power to both the **Raspberry Pi** and the **Arduino Nano RP2040**, providing stable voltage and current to the main computing units.
 
-We are planning to replace the power bank with the **Geekworm Raspberry Pi Wide Input Voltage Power Management Module**, which will allow us to:
+- The **MG996R servo motor** is powered by the **5 volts** output from the **Raspberry Pi**, ensuring synchronized control and stable operation.
 
-- Power the Raspberry Pi and camera directly from the 3.7V lithium batteries.
-- Provide regulated and protected power delivery to the SBC.
-- Reduce weight and improve cable management by eliminating the external power bank.
+- The **Microsoft LifeCam HD-3000 webcam** connects to the **Raspberry Pi** via **USB**, receiving data and power directly through this interface.
 
-This upgrade will result in a more compact, efficient, and reliable power system.
+- The **DC motor** is powered by **three STEREN Li-ion 2800 mAh rechargeable batteries** delivering **12 volts** through the **L298N driver**, allowing it to handle higher voltages and currents safely.
 
----
+We are planning to upgrade the system by replacing the power bank with the **Geekworm Raspberry Pi Wide Input Voltage Power Management Module**, which will:
+
+- Allow powering the Raspberry Pi and camera directly from lithium batteries with regulated voltage.
+- Provide protected and reliable power delivery to all connected components.
+- Help reduce overall weight and simplify cable management by removing the external power bank.
+
+This upgrade aims to create a more compact, efficient, and reliable power system for the robot.
+
+# 📡 Robot Communication
+
+Our robot implements a structured communication system between its two core processing units to ensure synchronized and reliable operation:
+
+- The **Raspberry Pi** (SBC – Single Board Computer) acts as the **master**. It is responsible for high-level tasks such as image processing, object detection, strategy decision-making, and general system coordination.
+
+- The **Arduino Nano RP2040** (SBM – Secondary Board Microcontroller) acts as the **slave**. It is dedicated to real-time control of low-level hardware components, such as driving the servo motor and interpreting incoming instructions from the master.
+
+### 🔁 Serial Communication
+
+The two boards communicate via a **UART (Serial) interface** using the following configuration:
+
+- **Raspberry Pi TX (GPIO 14)** → **Arduino RX (pin 1)**  
+- **Raspberry Pi RX (GPIO 15)** ← **Arduino TX (pin 0)**
+
+This full-duplex serial link enables:
+
+- The **Raspberry Pi (master)** to send instructions like servo angles or movement triggers based on camera input.
+- The **Arduino (slave)** to receive commands and execute precise control over hardware.
+- **Optional feedback**: The Arduino can also send status messages or sensor feedback back to the Raspberry Pi when necessary.
+
+This master-slave architecture promotes:
+
+- **Modularity**, by separating high-level logic and low-level control.
+- **Responsiveness**, with real-time actions handled by the microcontroller.
+- **Scalability**, allowing for future hardware expansions without major rewrites.
+
+The system is optimized for efficiency and robustness in fast-paced robotic challenges.
 
 # 👁️ Sense and Object Detection
 
@@ -149,10 +186,10 @@ This setup enables the robot to:
 - Detect and avoid **black walls** on the track.
 - Identify and avoid **obstacles**, including **red and green blocks**.
 - Recognize the **magenta parking spot** and perform parking maneuvers.
-- Count **orange and blue lines** on the mat to track laps (3 total), ensuring compliance with lap-counting requirements.
+- Count **orange and blue lines** on the mat to track laps (12 sets of lines total), ensuring compliance with lap-counting requirements.
 
 
-# Challenge Strategies
+# ⚔️ Challenge Strategies
 
 ## Open Challenge Strategy
 
@@ -182,15 +219,16 @@ The Obstacle Challenge code relies on detecting colored blocks—**red** and **g
   <img src="https://github.com/user-attachments/assets/7b70ce4a-0ba3-4e91-924a-d9df1eb91ae7" alt="Example image" width="300" />
 </div>
 - Turning state (`girando`) tracks if the robot is currently turning to prevent conflicting commands.           
-- The robot uses a black line detection ROI to keep track of the floor line and assist navigation while turning.
-- Yellow lines are detected to count how many have been crossed; the robot stops after detecting **12** yellow lines, indicating the end of the course.
+- The robot uses a black line detection ROI to keep track and assist navigation while turning.
+- Orange lines are detected to count how many have been crossed; the robot stops after detecting **12** orange lines, indicating the end of the course.
 - The servo command is sent as an angle string to the Arduino, which moves the servo accordingly.
-- The motor moves forward continuously unless stopped by the yellow line count condition.
+- The motor moves forward continuously unless stopped by the orange line count condition.
 - The system uses visual markers and debug prints for easy monitoring.
+- At the moment of parking it will identify the Magente parking lot and maneuver to do a parallel park.
 
 This obstacle avoidance strategy combines color-based object detection with line following and a servo-actuated steering system to navigate safely and complete the obstacle course.
 
-# Into the codes (code explanations)
+# `</>` Into the codes (code explanations)
 
 
 ---
