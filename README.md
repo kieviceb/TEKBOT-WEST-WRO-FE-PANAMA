@@ -52,9 +52,7 @@ Diego is the team’s **coach and mentor**, guiding the team through strategy, p
 | <img width="270" alt="front" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> |<img width="270" alt="front" src="https://github.com/user-attachments/assets/98f60e79-1afc-43a9-aa50-4e2e825715e4"> |  <img width="270" alt="front" src="https://github.com/user-attachments/assets/6c593234-e3ec-4686-a9a8-bdd1bfbeefac"> |
 | Left          | Top       | Bottom     |
 |<img width="270" alt="front" src="https://github.com/user-attachments/assets/b835d64c-79fb-4abb-b9a4-92445bec3d5b">| <img width="270" alt="front" src="https://github.com/user-attachments/assets/837ce766-5ce4-4726-8e1b-41b85ca31dbd"> | <img width="270" alt="front" src="https://github.com/user-attachments/assets/db67a2cb-4798-4c9f-8c6b-0a57b5aee964">|
-
 <br>
- <br>
 
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
@@ -191,6 +189,9 @@ The Obstacle Challenge code relies on detecting colored blocks—**red** and **g
 - The system uses visual markers and debug prints for easy monitoring.
 
 This obstacle avoidance strategy combines color-based object detection with line following and a servo-actuated steering system to navigate safely and complete the obstacle course.
+
+# Into the codes (code explanations)
+
 
 ---
 
