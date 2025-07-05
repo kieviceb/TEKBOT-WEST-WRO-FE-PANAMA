@@ -227,6 +227,7 @@ The Obstacle Challenge code relies on detecting colored blocks—**red** and **g
    <div align="center">
   <img src="https://github.com/user-attachments/assets/7b70ce4a-0ba3-4e91-924a-d9df1eb91ae7" alt="Example image" width="300" />
 </div>
+
 - Turning state (`girando`) tracks if the robot is currently turning to prevent conflicting commands.           
 - The robot uses a black line detection ROI to keep track and assist navigation while turning.
 - Orange lines are detected to count how many have been crossed; the robot stops after detecting **12** orange lines, indicating the end of the course.
