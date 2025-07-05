@@ -25,8 +25,12 @@ This is the official repository for TEKBOT WEST, the team participating in the P
   
 ## Meet the team 👨‍💻
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/bbfb9286-652d-4064-b1f4-a33967fa7d1e" width="700">
+  <img src="https://github.com/user-attachments/assets/ba7f0194-32e4-4a79-b4d1-103c4f74d16d" width="700">
 </p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c1aeba33-cf0c-4d3f-83ea-b1dc7c1f9202" width="500">
+</p>
+
 
 ## 👤 Luis Hidalgo  
 ### Age: 16  
@@ -66,7 +70,7 @@ A list of all the electrical and mechanical components on the robot.
 |[Jumper wires](https://a.co/d/cw9IdJk)|[MG996R High Torque Metal Gear Servo x1](https://a.co/d/cRVAc0u)|[STEREN Li-ion 2800 mAh Rechargeable Battery x3](https://www.steren.com.pa/bateria-recargable-li-ion-2800-mah-tipo-18650-1.html)|
 | <img src="https://github.com/user-attachments/assets/e9f54336-7c3e-4f5c-9fd6-187f679f36c4" width="200"/> |<img src="https://github.com/user-attachments/assets/9070d3fd-e59f-4762-a41c-219a8f243521" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/e4f5aa32-4f95-4007-bf7e-19fbd9c0b517" alt="Alt 1" width="200"/> |
 |[Infrared Proximity Distance Sensor x3](https://a.co/d/d245jBL)|[Cable Clamp Connectors](https://a.co/d/cV5jVKI)|[Silicone Hook Up Wire](https://a.co/d/fEKUibh)|
-| <img src="https://github.com/user-attachments/assets/c4632267-e417-4f33-bfa0-a858d9f1e28e" width="200"/> |<img src="(https://github.com/user-attachments/assets/dd5c7b13-b8ad-4aa0-9481-8411c9bf2b1a" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/72f660f8-0134-4bb3-aa97-c8b0ae3c5f5a" alt="Alt 1" width="200"/> |
+| <img src="https://github.com/user-attachments/assets/c4632267-e417-4f33-bfa0-a858d9f1e28e" width="200"/> |<img src="https://github.com/user-attachments/assets/dd5c7b13-b8ad-4aa0-9481-8411c9bf2b1a" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/72f660f8-0134-4bb3-aa97-c8b0ae3c5f5a" alt="Alt 1" width="200"/> |
 |[Mini breadboard x1](https://a.co/d/0logMX9)|[Push button x1](https://a.co/d/70cfCgl)|[ 10K ohm Resistor x1](https://a.co/d/dTNRWBD)|
 
 > [!WARNING]
