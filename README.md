@@ -693,7 +693,7 @@ Click down below for the demonstration of the first round of our robot.
 # References
 - https://nerdvana.ro/wro-fe/
 - https://markdownlivepreview.com/
-- 
+- https://docs.opencv.org/3.4/da/d97/tutorial_threshold_inRange.html
 
 ## 📜 License
 
