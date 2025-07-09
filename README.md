@@ -10,7 +10,7 @@
 This is the official repository for TEKBOT WEST, the team participating in the Panama WRO Regional phase to compete for a spot on the national team. Here you'll find everything related to the development of our robot as we strive towards the national and international finals!
 
 
-# Repo's folder structure/overview
+# 🐙 Repo's folder structure/overview
 ```
 📦 TEKBOT-WEST-WRO-FE
 ├── 📁 3D_printables # 3D models ready for printing robot components
