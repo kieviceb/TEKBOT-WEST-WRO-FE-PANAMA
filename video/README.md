@@ -1,4 +1,4 @@
-# 🎥 Video demonstration
+# 🎥 **Video demonstration**
 Click down below for the demonstration of the first round of our robot.
 
 [CLICK HERE!](https://youtu.be/aBIIU7W57JA?si=Zv62mgVx7OuttPh0)
