@@ -31,6 +31,17 @@ This is the official repository for TEKBOT WEST, the team participating in the P
   <img src="https://github.com/user-attachments/assets/c1aeba33-cf0c-4d3f-83ea-b1dc7c1f9202" width="500">
 </p>
 
+| 👤 Luis Hidalgo |  👩‍💻 Ericka Ceballos |🎨 Patrick Sutherland |
+|:----------------:|:------------------:|:------------------:|
+| 16 years old | 18 years old | 17 years old |
+| <img width="600" alt="Luis" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> | <img width="600" alt="Luis" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> | <img width="600" alt="Luis" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> |
+|<div style="max-width: 300px; text-align: justify;">Luis is the team’s <strong>electrician and hardware specialist</strong>. He handles wiring, sensors, and all things related to power and circuitry. Luis brings hands-on experience from previous <strong>WRO competitions</strong>, contributing to the robot's reliability and performance.</div>|<div style="max-width: 300px; text-align: justify;">Ericka is the team’s <strong>programmer</strong>, responsible for writing and debugging the robot's code. She ensures that the robot can make real-time decisions and execute tasks with precision. Ericka has participated in <strong>WRO</strong> and brings her technical and problem-solving skills to every challenge.</div>| <div style="max-width: 300px; text-align: justify;">Patrick serves as the team’s <strong>designer</strong>. He focuses on the mechanical layout and overall functionality of the robot, balancing creativity with engineering. Patrick is also a returning <strong>WRO participant</strong>, constantly improving the robot's design through testing and iteration.</div>|
+
+|🧠 Our Coach — Diego Delgado  |
+|:----------------------------:|
+| <img width="600" alt="Luis" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> |
+|<div style="max-width: 300px; text-align: justify;">Diego is the team’s <strong>coach and mentor</strong>, guiding the team through strategy, planning, and technical reviews. He is the <strong>founder of Tekbot</strong>, an organization dedicated to promoting STEM and robotics education for children and young people. Diego is a <strong>former WRO participant</strong> himself and has also coached teams in <strong>FRC</strong>, offering a broad perspective and deep expertise in robotics education.</div>|
+
 
 ## 👤 Luis Hidalgo  
 ### Age: 16  
