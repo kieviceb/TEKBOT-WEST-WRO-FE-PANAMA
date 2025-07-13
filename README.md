@@ -694,6 +694,21 @@ Click down below for the demonstration of the first round of our robot.
 
 # Shout-Outs
 
+A huge thank you to everyone who made this project possible:
+
+- **The Sutherland Family**  
+  For sharing their technical know-how, sourcing crucial parts, and helping with all of our 3D printing needs.
+
+- **Ericka’s Family**  
+  For opening up their living room as our track space and pitching in to build the surrounding walls.
+
+- **The Hidalgo Family**  
+  For generously donating the printed track mat that serves as our competition surface.
+
+- **Diego’s Family**  
+  For welcoming us into their home and providing a comfortable space for our team meetings and build sessions.
+
+We couldn’t have done it without your support—thank you for being an integral part of our journey!
 
 # 📜 License
 
