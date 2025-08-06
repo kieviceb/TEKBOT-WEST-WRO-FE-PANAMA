@@ -22,20 +22,13 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 ├── 📄 README.md # Main project documentation
 ```
 ---
-  
-## Meet the team 👨‍💻
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/ba7f0194-32e4-4a79-b4d1-103c4f74d16d" width="700">
-</p>
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/c1aeba33-cf0c-4d3f-83ea-b1dc7c1f9202" width="500">
-</p>
 
+<img width="1000" height="542" alt="meet the team (1)" src="https://github.com/user-attachments/assets/1e7699de-ff04-4841-9bb3-7df9d69a9731" />
 
 | 👤 Luis Hidalgo |  👩‍💻 Ericka Ceballos |🎨 Patrick Sutherland |
 |:----------------:|:------------------:|:------------------:|
 | 16 years old | 18 years old | 17 years old |
-| <img width="620" alt="Luis" src="https://github.com/user-attachments/assets/68e425c1-feb2-40fc-8076-f18d26af7d6b"> | <img width="600" alt="Luis" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> | <img width="600" alt="PARRICI" src="https://github.com/user-attachments/assets/6716ccc4-981c-4678-acb2-edd338fd8f0c"> |
+| <img width="620" alt="Luis" src="https://github.com/user-attachments/assets/68e425c1-feb2-40fc-8076-f18d26af7d6b"> | <img width="600" alt="Luis" src="https://github.com/user-attachments/assets/c74c8a1b-f2fd-4a0f-b22b-9c90e258b3c5"> | <img width="600" alt="PARRICI" src="https://github.com/user-attachments/assets/6716ccc4-981c-4678-acb2-edd338fd8f0c"> |
 |<div style="max-width: 300px; text-align: justify;">Luis is the team’s <strong>electrician and hardware specialist</strong>. He handles wiring, sensors, and all things related to power and circuitry. Luis brings hands-on experience from previous <strong>WRO competitions</strong>, contributing to the robot's reliability and performance.</div>|<div style="max-width: 300px; text-align: justify;">Ericka is the team’s <strong>programmer</strong>, responsible for writing and debugging the robot's code. She ensures that the robot can make real-time decisions and execute tasks with precision. Ericka has participated in <strong>WRO</strong> and brings her technical and problem-solving skills to every challenge.</div>| <div style="max-width: 300px; text-align: justify;">Patrick serves as the team’s <strong>designer</strong>. He focuses on the mechanical layout and overall functionality of the robot, balancing creativity with engineering. Patrick is also a returning <strong>WRO participant</strong>, constantly improving the robot's design through testing and iteration.</div>|
 
 | 🧠 Our Coach — Diego Delgado | 25 years old|
@@ -44,13 +37,7 @@ This is the official repository for TEKBOT WEST, the team participating in the P
 
 ---
 # Vehicle Photos 📸
-
-| Front           | Right       | Back      |
-|:---------------:|:-----------:|:---------:|
-| <img width="270" alt="front" src="https://github.com/user-attachments/assets/52ef1eb8-44c9-489f-9020-e1c41df86249"> |<img width="270" alt="front" src="https://github.com/user-attachments/assets/98f60e79-1afc-43a9-aa50-4e2e825715e4"> |  <img width="270" alt="front" src="https://github.com/user-attachments/assets/6c593234-e3ec-4686-a9a8-bdd1bfbeefac"> |
-| Left          | Top       | Bottom     |
-|<img width="270" alt="front" src="https://github.com/user-attachments/assets/b835d64c-79fb-4abb-b9a4-92445bec3d5b">| <img width="270" alt="front" src="https://github.com/user-attachments/assets/837ce766-5ce4-4726-8e1b-41b85ca31dbd"> | <img width="270" alt="front" src="https://github.com/user-attachments/assets/db67a2cb-4798-4c9f-8c6b-0a57b5aee964">|
-<br>
+<img width="1000" height="1500" alt="meet the team (2)" src="https://github.com/user-attachments/assets/be8bfb1d-6f9f-4342-a1d1-7f9fee7343f5" />
 
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
@@ -67,20 +54,10 @@ A list of all the electrical and mechanical components on the robot.
 | <img src="https://github.com/user-attachments/assets/c4632267-e417-4f33-bfa0-a858d9f1e28e" width="200"/> |<img src="https://github.com/user-attachments/assets/dd5c7b13-b8ad-4aa0-9481-8411c9bf2b1a" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/72f660f8-0134-4bb3-aa97-c8b0ae3c5f5a" alt="Alt 1" width="200"/> |
 |[Mini breadboard x1](https://a.co/d/0logMX9)|[Push button x1](https://a.co/d/70cfCgl)|[ 10K ohm Resistor x1](https://a.co/d/dTNRWBD)|
 
-> [!WARNING]
->
-> Our robot has infrared sensors connected, but they are not used in this regional competition.  
-> Activating them is planned as a future improvement.
->
 
 # ⚡Circuit diagram
 
-![1](https://github.com/user-attachments/assets/d847c053-dc1a-4490-90ae-936d9f6d7b5f)
-> [!NOTE]
-> For schematic diagram as well in fritzing and PNG format
-> [SCHEMES](https://github.com/kieviceb/TEKBOT-WEST-WRO-FE/tree/main/schemes)
-
---- 
+<img width="1920" height="1080" alt="Wiring diagram" src="https://github.com/user-attachments/assets/a8a37846-0950-4cb8-8dc3-2045f952b8c9" />
 
 # Future Engineers Challenge Overview
 
@@ -105,6 +82,14 @@ Each team is required to maintain a **public GitHub repository** documenting the
 ### 🏆 Scoring & Evaluation
 
 Teams are evaluated based on their robot’s **accuracy**, **speed**, and the quality of their **technical documentation**. Points are awarded to teams that effectively balance performance, adaptability to randomized conditions, and innovation in their approach. This challenge promotes not only technical skills in robotics and programming but also problem-solving, teamwork, and creative engineering.
+> [!WARNING]
+>
+> We noticed a translation misunderstanding regarding the rules, at the original english version it says
+> that the robot starting within the parking lot is 7 points, but in the spanish version states that the robot should be on
+> In the parking lot, not specifying if before or after the challenge is done, but taking as reference the original english version
+> the robot starting on the parking lot can score 7 points.
+>
+<img width="653" height="186" alt="meet the team (3)" src="https://github.com/user-attachments/assets/3d4dfe50-6bb6-4aca-be4a-6e9f3429dde8" />
 
 ---
 
