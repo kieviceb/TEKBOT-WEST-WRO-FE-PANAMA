@@ -102,37 +102,35 @@ Teams are evaluated based on their robot’s **accuracy**, **speed**, and the qu
 
 # ⚙️ Mobility Management
 
-Our robot's mobility system is divided into two main components: **movement** and **steering**.
-
 ### Movement
-The robot uses a **DC motor** mounted at the rear, connected to a **shared rear axle** via a mechanical linkage. This ensures both rear wheels rotate together, complying with WRO rules. The motor shaft (D-shaft) is securely coupled to the axle for efficient torque transfer.
-
-The motor is controlled by an **L298N motor driver**, which is connected directly to the **Raspberry Pi**. This allows the Pi to manage motor speed and direction based on real-time vision processing.
+- **LEGO EV3 Large Motor** driven by an L298N H-bridge on the Arduino Nano RP2040, powered by a 3×18650 Li-ion pack (≈11.1 V) for high torque.
+- PWM speed control (pin D3) and direction pins (D4/D5), with automatic halt if HC-SR04 front distance < threshold.
+- Receives speed & direction commands over Serial1 from the Raspberry Pi.
 
 ### Steering
-For steering, we use the **MG996R metal gear servo motor**, known for its high torque and precision. The robot employs an **Ackermann steering system**, included in the Funduino kit, which mimics real vehicle steering geometry for smoother and more accurate turns.
+- **MG996R metal-gear servo** in an Ackermann linkage for accurate, repeatable turns.
+- Servo angles (60° left, 90° center, 120° right) sent as ASCII strings over Serial1 and output via PWM on D9.
+- Combines ultrasonic PD wall-following and IMU yaw-rate curve detection for smooth autonomous steering.
 
-The **Arduino Nano RP2040** receives steering commands from the Raspberry Pi and controls the servo motor accordingly.
 
 # 🔋 Power Management
 
-Our robot uses a well-organized power system to ensure stable and efficient energy distribution:
+Our robot uses a streamlined power system for stable, efficient energy distribution:
 
-- A **power bank** supplies power to both the **Raspberry Pi** and the **Arduino Nano RP2040**, providing stable voltage and current to the main computing units.
+- **Geekworm UPS Module**  
+  All computing units (Raspberry Pi & Arduino Nano RP2040) are powered directly from the Geekworm Raspberry Pi Wide Input Voltage UPS, providing regulated 5 V output and battery backup—no external power bank needed.
 
-- The **MG996R servo motor** is powered by the **5 volts** output from the **Raspberry Pi**, ensuring synchronized control and stable operation.
+- **Servo Power**  
+  The MG996R steering servo draws its 5 V supply from the UPS module, ensuring stable, synchronized operation.
 
-- The **Microsoft LifeCam HD-3000 webcam** connects to the **Raspberry Pi** via **USB**, receiving data and power directly through this interface.
+- **Camera Power**  
+  The Microsoft LifeCam HD-3000 connects via USB to the Raspberry Pi and is powered through the UPS, eliminating separate camera power sources.
 
-- The **DC motor** is powered by **three STEREN Li-ion 2800 mAh rechargeable batteries** delivering **12 volts** through the **L298N driver**, allowing it to handle higher voltages and currents safely.
+- **DC Motor Power**  
+  The L298N H-bridge and DC motor are driven by a dedicated pack of three 18650 Li-ion cells in series (≈11.1 V), delivering the higher voltage and current the motor requires.
 
-We are planning to upgrade the system by replacing the power bank with the **Geekworm Raspberry Pi Wide Input Voltage Power Management Module**, which will:
+This setup reduces weight, simplifies cabling, and guarantees reliable power under all operating conditions.  
 
-- Allow powering the Raspberry Pi and camera directly from lithium batteries with regulated voltage.
-- Provide protected and reliable power delivery to all connected components.
-- Help reduce overall weight and simplify cable management by removing the external power bank.
-
-This upgrade aims to create a more compact, efficient, and reliable power system for the robot.
 
 # 📡 Robot Communication
 
@@ -165,214 +163,254 @@ The system is optimized for efficiency and robustness in fast-paced robotic chal
 
 # 👁️ Sense and Object Detection
 
-Our robot uses **computer vision** to perceive its environment and make autonomous decisions.
+Our robot relies on a combination of vision, ultrasonic sensing, and inertial measurement to understand its environment and make driving decisions.
 
-### Vision System
-We use the **Microsoft LifeCam HD-3000** webcam in combination with **OpenCV (Open Source Computer Vision Library)**, a powerful toolkit for real-time image processing. All image processing is handled on the **Raspberry Pi**, which interprets the camera feed and:
+### Vision System  
+We use the Microsoft LifeCam HD-3000 with OpenCV on the Raspberry Pi. The Pi processes the camera feed to:  
+- Detect **red** and **green blocks** for obstacle avoidance.  
+- Recognize the **magenta parking spot** to initiate the parking routine.  
+- Send steering and speed commands to the Arduino Nano RP2040 over Serial.
 
-- Sends **steering commands** to the **Arduino Nano RP2040**, which controls the MG996R servo motor.
-- Directly controls the **DC motor** through the **L298N motor driver**.
+### Ultrasonic Wall Detection  
+The Arduino Nano RP2040 reads three HC-SR04 ultrasonic sensors (left, center, right) to:  
+- Measure distances to **black walls** on either side and in front.  
+- Trigger emergency avoidance maneuvers when walls are too close.
 
-This setup enables the robot to:
+### IMU-Based Curve Detection  
+An MPU6050 IMU on the Arduino provides:  
+- Precise yaw (Z-axis) rate measurements.  
+- Automatic detection of each curve when the yaw rate exceeds a threshold.  
+- Curve counting (stop after **12** curves) and smooth turn control.
 
-- Detect and avoid **black walls** on the track.
-- Identify and avoid **obstacles**, including **red and green blocks**.
-- Recognize the **magenta parking spot** and perform parking maneuvers.
-- Count **orange and blue lines** on the mat to track laps (12 sets of lines total), ensuring compliance with lap-counting requirements.
-
+This multi-sensor approach ensures robust performance: vision handles colored block and parking detection, ultrasonics handle wall avoidance, and the IMU guarantees accurate turn detection and counting.  
 
 # ⚔️ Challenge Strategies
-
 ## Open Challenge Strategy
 
-The Open Challenge focuses on detecting colored lines—specifically **orange** and **blue**—on the floor and reacting by steering the robot accordingly:
+- **Start Command**  
+  Wait for `'s'` on Serial1 before beginning navigation.
 
-- The camera captures a Region of Interest (ROI) near the floor to detect these colored lines.
-- HSV color filtering isolates orange and blue colors in the ROI.
-- When an orange line is detected, the robot commands the servo to turn **120° to the right** and temporarily increases motor speed.
-- When a blue line is detected, the robot commands the servo to turn **58° to the left** and also increases motor speed.
-- If no colored line is detected, the servo centers at **90°**, and the robot moves at a default speed.
-- Turns last for a fixed duration (~1.3 seconds), after which the servo returns to center and speed reduces to default.
-- Visual feedback is provided via OpenCV windows showing the camera feed and detected masks.
-- The motor is continuously driven forward except when stopping is needed.
-- This strategy allows the robot to smoothly follow colored paths by combining real-time color detection with timed servo steering commands.
+- **Ultrasonic Sensing**  
+  Continuously read left, center and right HC-SR04 sensors for obstacle distances.
+
+- **Front Obstacle Handling**  
+  If center distance ≤ FRONT_MIN, halt motor; otherwise drive at fixed PWM speed.
+
+- **Emergency Side Avoidance**  
+  If left or right distance ≤ SIDE_MIN, immediately steer hard away (servo to 120° or 60°).
+
+- **PD Steering Control**  
+  When no emergency, compute error = dR − dL and derivative, apply Kp/Kd to adjust servo within ±30° deadzone around 90°.
+
+- **Curve Detection via IMU**  
+  Read MPU6050 gyro Z-axis; when |ωZ| > 30°/s detect a new turn, increment curveCount and prevent multiple counts during one turn.
+
+- **Completion Condition**  
+  Stop motor and center servo once 12 curves have been counted; remain halted.
+
+- **Serial Feedback**  
+  Print “Curve #n” and status messages over Serial1 for real-time monitoring.
 
 ## Obstacle Challenge Strategy
 
-The Obstacle Challenge code relies on detecting colored blocks—**red** and **green**—using the camera, and responding with precise servo movements to avoid collisions:
+- **ROI & LAB Masking**  
+  Convert the ROI to LAB and extract masks for red, green, orange (and black guide lines), boosting precision and efficiency.
 
-- The camera captures a region (ROI) where colored blocks appear.
-- HSV filtering identifies red and green blocks.
-- The program calculates the position (center X coordinate) and size (pixel area) of these blocks.
-- When a red block is detected with enough size, the robot initiates a **right turn** by commanding the servo to angle **120°**.
-- When a green block is detected, it initiates a **left turn** with servo angle **58°**.
-- The robot **continues to turn until each block moves past a predefined horizontal limit** (an X-coordinate on the frame), ensuring the block is completely avoided before resuming a straight path.
-   <div align="center">
-  <img src="https://github.com/user-attachments/assets/7b70ce4a-0ba3-4e91-924a-d9df1eb91ae7" alt="Example image" width="300" />
-</div>
+- **Contour Detection**  
+  Find contours on each LAB mask to compute block centroids and areas.
+![WhatsApp Image 2025-07-31 at 20 11 59_a4aa4e94](https://github.com/user-attachments/assets/e9547dd8-7004-4965-af65-36867bd807ac)
+- **Block Turns**  
+  - **Red →** right turn (servo 120°)  
+  - **Green →** left turn (servo 58°)  
+  Hold the command until the block exits the frame.
 
-- Turning state (`girando`) tracks if the robot is currently turning to prevent conflicting commands.           
-- The robot uses a black line detection ROI to keep track and assist navigation while turning.
-- Orange lines are detected to count how many have been crossed; the robot stops after detecting **12** orange lines, indicating the end of the course.
-- The servo command is sent as an angle string to the Arduino, which moves the servo accordingly.
-- The motor moves forward continuously unless stopped by the orange line count condition.
-- The system uses visual markers and debug prints for easy monitoring.
-- At the moment of parking it will identify the Magente parking lot and maneuver to do a parallel park.
+- **Line Tracking**  
+  Use a black-line LAB mask to keep alignment during and after turns.
 
-This obstacle avoidance strategy combines color-based object detection with line following and a servo-actuated steering system to navigate safely and complete the obstacle course.
+- **Stage Counting**  
+  Increment on each orange line detected; stop after **12** crossings.
+
+- **Serial Steering & Motor**  
+  Send `S<angle>` over Serial to Arduino; motor runs forward continuously unless the final stop is reached.
+
+- **Final Parking**  
+  Detect magenta markers in LAB space to initiate a parallel-parking routine.
+
 
 # `</>` Into the codes (code explanations)
 ## 1. **Open Challenge code**
-- Import libraries
-```python
-import cv2
-import numpy as np
-import serial
-import time
-from gpiozero import Motor, PWMOutputDevice
+- **Include Libraries**
+  ```cpp
+  #include <Wire.h>
+  #include <MPU6050.h>
+  #include <Servo.h>
+These headers let us use I²C (Wire) to communicate with the MPU6050 IMU, access the IMU’s functions, and drive a steering servo.
+-Define Pins & Constants
+```cpp
+// HC-SR04 ultrasonic sensors
+const int TRIG_LEFT   = 6;
+const int ECHO_LEFT   = 7;
+const int TRIG_CENT   = 8;
+const int ECHO_CENT   = 9;
+const int TRIG_RIGHT  = 10;
+const int ECHO_RIGHT  = 11;
+
+// Steering servo and motor H-bridge
+const int SERVO_PIN   = 2;
+const int ENB         = 3;
+const int IN3         = 4;
+const int IN4         = 5;
+
+// PD control gains
+const float Kp = 0.5;
+const float Kd = 0.1;
+
+// Safety thresholds (cm)
+const float SIDE_MIN_LEFT  = 17.0;
+const float SIDE_MIN_RIGHT = 16.0;
+const float FRONT_MIN      = 16.0;
+
+// Servo limits
+const int SERVO_CENTER    = 90;
+const int SERVO_MAX_LEFT  = 60;
+const int SERVO_MAX_RIGHT = 120;
+const int SERVO_DEADZONE  = 30;
+
+// Motor speed (0–255 PWM)
+const int MOTOR_SPEED = 200;
 ```
-These libraries provide access to the camera, matrix operations for image processing, serial communication with Arduino, timing functions, and motor control through the Raspberry Pi GPIO pins.
+These constants map the sensor and actuator pins, set the PD controller gains, safety distance thresholds, servo angle limits, and the fixed motor speed.
+-Global Objects & State
+```cpp
+Servo    steeringServo;
+MPU6050  imu;
 
-- Serial communication with Arduino
-```python
-arduino = serial.Serial("/dev/serial0", baudrate=9600, timeout=1)
-time.sleep(2)
+bool          started    = false;  // Has 's' been received on Serial1?
+int           curveCount = 0;      // Number of curves detected
+bool          turning    = false;  // Currently in a turn?
+float         prevError  = 0;
+unsigned long prevTime;
 ```
-Initializes UART communication between Raspberry Pi and Arduino. The 2-second delay ensures the connection stabilizes before sending commands.
+We create the servo and IMU objects, plus variables to track whether the robot has started, how many curves it’s made (via gyro), the turning state, and timing for the PD controller.
 
-- Motor and speed configuration
-```python
-motor = Motor(forward=20, backward=21)
-velocidad = PWMOutputDevice(12)
-velocidad.value = 0.8
+-Setup Function
+```cpp
+void setup() {
+  // 1) Serial1 for start command
+  Serial1.begin(115200);
+  Serial1.println("Waiting for 's' to start…");
+
+  // 2) Initialize IMU over I²C
+  Wire.begin();
+  imu.initialize();
+  if (!imu.testConnection()) {
+    Serial1.println("IMU not found!");
+    while(true); // Halt if IMU missing
+  }
+  Serial1.println("IMU initialized.");
+
+  // 3) Configure sensor & actuator pins
+  pinMode(TRIG_LEFT, OUTPUT);  pinMode(ECHO_LEFT, INPUT);
+  pinMode(TRIG_CENT, OUTPUT);  pinMode(ECHO_CENT, INPUT);
+  pinMode(TRIG_RIGHT, OUTPUT); pinMode(ECHO_RIGHT, INPUT);
+
+  steeringServo.attach(SERVO_PIN);
+  steeringServo.write(SERVO_CENTER);
+
+  pinMode(ENB, OUTPUT);
+  pinMode(IN3, OUTPUT);
+  pinMode(IN4, OUTPUT);
+  digitalWrite(IN3, HIGH); // forward
+  digitalWrite(IN4, LOW);
+
+  prevTime = micros();
+}
 ```
-Sets up the movement motor and connects speed control via PWM. The motor is prepared to move forward, and a base speed of 80% is defined.
+-Serial1 listens for 's' to begin
+-IMU is initialized and tested
+-Pins for sensors, servo, and motor are configured and centered
+Main Loop
+```cpp
+void loop() {
+  // A) Wait for 's' on Serial1
+  if (!started) {
+    if (Serial1.available() && Serial1.read() == 's') {
+      started = true;
+      Serial1.println("Starting navigation…");
+    } else {
+      return; // idle until start
+    }
+  }
 
-- Camera setup
-```python
-cap = cv2.VideoCapture(0)
-cv2.namedWindow("Vista Completa", cv2.WINDOW_NORMAL)
-cv2.resizeWindow("Vista Completa", 800, 600)
+  // B) Read distances
+  float dL = readUltrasonic(TRIG_LEFT,  ECHO_LEFT);
+  float dC = readUltrasonic(TRIG_CENT,  ECHO_CENT);
+  float dR = readUltrasonic(TRIG_RIGHT, ECHO_RIGHT);
+
+  // C) Front obstacle → stop or go
+  if (dC <= FRONT_MIN)        analogWrite(ENB, 0);
+  else                        analogWrite(ENB, MOTOR_SPEED);
+
+  // D) Emergency side avoidance or PD steering
+  if (dL <= SIDE_MIN_LEFT)    steeringServo.write(SERVO_MAX_RIGHT);
+  else if (dR <= SIDE_MIN_RIGHT) steeringServo.write(SERVO_MAX_LEFT);
+  else {
+    unsigned long now = micros();
+    float dt = (now - prevTime) / 1e6;
+    prevTime = now;
+    float error = dR - dL;
+    float dErr  = (error - prevError) / dt;
+    prevError   = error;
+    int delta = constrain(int(Kp*error + Kd*dErr),
+                          -SERVO_DEADZONE, SERVO_DEADZONE);
+    steeringServo.write(SERVO_CENTER + delta);
+  }
+
+  // E) Curve detection via IMU gyro Z-axis
+  float gyroZ = imu.getRotationZ() / 131.0;  // °/s
+  const float TURN_THRESHOLD = 30.0;
+  if (abs(gyroZ) > TURN_THRESHOLD) {
+    if (!turning) {
+      turning = true;
+      curveCount++;
+      Serial1.print("Curve #"); Serial1.println(curveCount);
+    }
+  } else {
+    turning = false;
+  }
+
+  // F) Stop after 12 curves
+  if (curveCount >= 12) {
+    analogWrite(ENB, 0);
+    steeringServo.write(SERVO_CENTER);
+    Serial1.println("12 curves reached—stopping.");
+    while(true);
+  }
+
+  delay(50); // ~20 Hz
+}
 ```
-Starts the camera feed and creates a display window to visualize the robot's view in real time. Useful for debugging alignment and detecting colors correctly.
-
-- Function to check color presence
-```python
-def detectar_color_linea(mask, umbral=1500):
-    return cv2.countNonZero(mask) > umbral
-  ```
-This function evaluates if the number of white pixels in a binary mask exceeds a threshold. If so, it considers that color present in the frame.
-
-- Function to detect orange or blue in the ROI
-```python
-def detectar_color_roi(roi_hsv):
-    lower_blue = np.array([100, 55, 20])
-    upper_blue = np.array([140, 255, 255])
-    mask_blue = cv2.inRange(roi_hsv, lower_blue, upper_blue)
-
-    lower_orange = np.array([0, 115, 139])
-    upper_orange = np.array([25, 255, 255])
-    mask_orange = cv2.inRange(roi_hsv, lower_orange, upper_orange)
-
-    if detectar_color_linea(mask_orange):
-        return "naranja", mask_orange
-    elif detectar_color_linea(mask_blue):
-        return "azul", mask_blue
-    else:
-        return None, None
-  ```
-Generates two binary masks for orange and blue using HSV thresholds. Based on the number of detected pixels, the function determines which color is present in the region of interest.
-
-- Main control loop and behavior logic
-```python
-girando = False
-inicio_giro = 0
-direccion = 'C'
+-Start check: waits for 's'
+-Read sensors: left, center, right
+-Front control: stop or run motor
+-Side avoidance & PD steering: emergency or smooth control
+-Curve detection: increment count when gyro Z exceeds threshold
+-Stop condition: halt when 12 curves detected
+-Utility: Ultrasonic Read
+```cpp
+float readUltrasonic(int trigPin, int echoPin) {
+  digitalWrite(trigPin, LOW);
+  delayMicroseconds(2);
+  digitalWrite(trigPin, HIGH);
+  delayMicroseconds(10);
+  digitalWrite(trigPin, LOW);
+  long duration = pulseIn(echoPin, HIGH, 30000);
+  if (duration == 0) return 300; 
+  return duration * 0.0343 / 2.0;  // cm
+}
 ```
-Initial variables to track whether the robot is turning, when the turn started, and the current servo direction: Centered (C), Left (L), or Right (R).
-```python
-try:
-    while True:
-        ret, frame = cap.read()
-        if not ret:
-            continue
-```
-Reads a frame from the camera. If the capture fails, it skips to the next loop iteration.
-```python
-        roi_inf = frame[355:405, :]
-        hsv_inf = cv2.cvtColor(roi_inf, cv2.COLOR_BGR2HSV)
-        color_inf, mask_inf = detectar_color_roi(hsv_inf)
- ```
-- Defines a lower region of interest in the image where the color line is expected. Converts it to HSV for easier color detection.
-```python
-        if not girando:
-            if color_inf == "naranja":
-                print("🟧 Orange detected → sending '120'")
-                arduino.write(b'120\n')
-                velocidad.value = 1.0
-                inicio_giro = time.time()
-                girando = True
-                direccion = 'R'
-            elif color_inf == "azul":
-                print("🔵 Blue detected → sending '58'")
-                arduino.write(b'58\n')
-                velocidad.value = 1.0
-                inicio_giro = time.time()
-                girando = True
-                direccion = 'L'
-            else:
-                print("⚪ No color detected → centering servo (90)")
-                arduino.write(b'90\n')
-                direccion = 'C'
-                velocidad.value = 0.8
- ```
-When not turning, this logic decides how the servo should respond:
-Orange: turn right (120°)
-Blue: turn left (58°)
-No color: return to center (90°)
-It also adjusts the speed and starts a timer if a turn was initiated.
-```python
-        else:
-            if time.time() - inicio_giro >= 1.3:
-                print("✅ Turn duration complete → sending '90'")
-                arduino.write(b'90\n')
-                velocidad.value = 0.8
-                girando = False
-                direccion = 'C'
-```
-If the robot is currently turning, this block checks if 1.3 seconds have passed. If so, the servo is returned to center and the robot exits turning mode.
-```python
-        motor.forward()
-```
-Keeps the robot moving forward regardless of servo direction.
+Triggers the HC-SR04 sensor, measures echo pulse width, and converts it to distance in centimeters.
 
-- Visual feedback and debug tools
-```python
-        cv2.rectangle(frame, (0, 355), (640, 405), (255, 128, 0), 2)
-        cv2.putText(frame, f"Dir: {direccion}", (20, 50), cv2.FONT_HERSHEY_SIMPLEX, 1.5, (0, 255, 0), 3)
-        cv2.imshow("Vista Completa", frame)
-
-        if mask_inf is not None:
-            cv2.imshow("ROI Inferior", mask_inf)
-```
-Draws a rectangle to visualize the region of interest and displays the current direction (L, R, C). Shows the processed binary mask to confirm color detection works as expected.
-```python
-   if cv2.waitKey(1) & 0xFF == ord('q'):
-            break
-```
-Allows the user to exit the loop and end the program by pressing the q key.
-
-- Cleanup and shutdown procedure
-```python
-finally:
-    cap.release()
-    cv2.destroyAllWindows()
-    arduino.write(b'90\n')
-    arduino.close()
-    motor.stop()
-```
-
-Releases camera and OpenCV resources, centers the servo before exiting, closes the serial connection to Arduino, and stops the motor.
 ## 2. **Obstacle Challenge code**
 Import libraries
 ```python
@@ -666,9 +704,9 @@ pause()
 Prints a message to inform the user that the system is ready and listening for the button press. The pause() function keeps the script running indefinitely so it can detect the button press event; without it, the script would exit immediately.
 
 # 🎥 Video demonstration
-Click down below for the demonstration of the first round of our robot.
+Click down below for the demonstration of our robot.
+<img width="800" height="250" alt="TEKBOT (2)" src="https://github.com/user-attachments/assets/4f9f93a7-745f-4261-8274-8bc7922caef0" />
 
-[CLICK HERE!](https://youtu.be/aBIIU7W57JA?si=Zv62mgVx7OuttPh0)
 
 ---
 **Stay tuned for updates as we continue to improve our robot's performance and capabilities!**
