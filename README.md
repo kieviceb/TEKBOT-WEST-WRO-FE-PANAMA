@@ -707,7 +707,7 @@ Prints a message to inform the user that the system is ready and listening for t
 Click down below for the demonstration of our robot.
 <img width="800" height="250" alt="TEKBOT (2)" src="https://github.com/user-attachments/assets/4f9f93a7-745f-4261-8274-8bc7922caef0" />
 
-
+[![TEKBOT (2)](https://github.com/user-attachments/assets/4f9f93a7-745f-4261-8274-8bc7922caef0)](https://www.youtube.com/watch?v=aBIIU7W57JA)
 ---
 **Stay tuned for updates as we continue to improve our robot's performance and capabilities!**
 
