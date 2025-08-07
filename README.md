@@ -177,7 +177,7 @@ The Arduino Nano RP2040 reads three HC-SR04 ultrasonic sensors (left, center, ri
 - Trigger emergency avoidance maneuvers when walls are too close.
 
 ### IMU-Based Curve Detection  
-An MPU6050 IMU on the Arduino provides:  
+An IMU on the Arduino provides:  
 - Precise yaw (Z-axis) rate measurements.  
 - Automatic detection of each curve when the yaw rate exceeds a threshold.  
 - Curve counting (stop after **12** curves) and smooth turn control.
