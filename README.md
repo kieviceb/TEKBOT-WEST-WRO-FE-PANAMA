@@ -1,7 +1,8 @@
 # TEKBOT WEST's readme <img src="https://upload.wikimedia.org/wikipedia/commons/a/ab/Flag_of_Panama.svg" alt="Bandera de Panamá" width="30"/>
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/8912879b-165d-4cd8-947b-c4cdc544ea91" alt="TEKBOT (1)">
+  <img src="https://github.com/user-attachments/assets/516d8dd3-5f5f-4bb0-b4f9-02e0fee0c09e" alt="TEKBOT (1)">
 </p>
+
 
 [![Instagram](https://img.shields.io/badge/Instagram-%23E9805F.svg?style=for-the-badge&logo=Instagram&logoColor=white)](https://www.instagram.com/tekbot_lab?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==)
 [![Facebook](https://img.shields.io/badge/YouTube-%23E4445F.svg?style=for-the-badge&logo=Youtube&logoColor=white)](https://www.youtube.com/@TEKBOT_LAB)
