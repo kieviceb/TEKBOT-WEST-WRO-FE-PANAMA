@@ -23,7 +23,10 @@
 ---
 
 <img width="1000" height="520" alt="AHHHHH_processed_by_imagy" src="https://github.com/user-attachments/assets/4d39ecf9-c464-4f2b-9efc-c3b949ed69be" />
-<img width="1000" height="2000" alt="BEHIND THE SCREENS (2)" src="https://github.com/user-attachments/assets/34d80203-9c0d-4e8b-a392-d2f8124f5f28" />
+<a href="https://github.com/kieviceb/TEKBOT-WEST-WRO-FE-PANAMA/tree/main/team%20photos">
+  <img width="1000" height="2000" alt="BEHIND THE SCREENS (2)" src="https://github.com/user-attachments/assets/34d80203-9c0d-4e8b-a392-d2f8124f5f28" />
+</a>
+
 
 ---
 # Vehicle Photos 📸
