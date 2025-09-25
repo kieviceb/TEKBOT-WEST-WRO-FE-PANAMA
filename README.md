@@ -697,8 +697,8 @@ pause()
 Prints a message to inform the user that the system is ready and listening for the button press. The pause() function keeps the script running indefinitely so it can detect the button press event; without it, the script would exit immediately.
 
 # 🎥 Video demonstration
-[![TEKBOT](https://github.com/user-attachments/assets/41548a17-1234-4439-a963-7a1d1d64031e)](https://www.youtube.com/watch?v=aBIIU7W57JA)
-[![TEKBOT(2)](https://github.com/user-attachments/assets/81b52a5e-d51f-4770-acd4-8bd30d91f259)](https://www.youtube.com/watch?v=aBIIU7W57JA)
+[![TEKBOT](https://github.com/user-attachments/assets/41548a17-1234-4439-a963-7a1d1d64031e)](https://youtu.be/VGku5C4htFQ?si=9HICP8p2Be4NuSKb)
+[![TEKBOT(2)](https://github.com/user-attachments/assets/81b52a5e-d51f-4770-acd4-8bd30d91f259)](https://youtu.be/uQNMZddFvvI?si=1SfpjZH-YJ5O9Mvj)
 ---
 **Stay tuned for updates as we continue to improve our robot's performance and capabilities!**
 
