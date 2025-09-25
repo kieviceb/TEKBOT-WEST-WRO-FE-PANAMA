@@ -22,17 +22,8 @@
 ```
 ---
 
-<img width="1000" height="542" alt="meet the team (1)" src="https://github.com/user-attachments/assets/1e7699de-ff04-4841-9bb3-7df9d69a9731" />
-
-| 👤 Luis Hidalgo |  👩‍💻 Ericka Ceballos |🎨 Patrick Sutherland |
-|:----------------:|:------------------:|:------------------:|
-| 16 years old | 18 years old | 17 years old |
-| <img width="620" alt="Luis" src="https://github.com/user-attachments/assets/68e425c1-feb2-40fc-8076-f18d26af7d6b"> | <img width="600" alt="Luis" src="https://github.com/user-attachments/assets/c74c8a1b-f2fd-4a0f-b22b-9c90e258b3c5"> | <img width="600" alt="PARRICI" src="https://github.com/user-attachments/assets/6716ccc4-981c-4678-acb2-edd338fd8f0c"> |
-|<div style="max-width: 300px; text-align: justify;">Luis is the team’s <strong>electrician and hardware specialist</strong>. He handles wiring, sensors, and all things related to power and circuitry. Luis brings hands-on experience from previous <strong>WRO competitions</strong>, contributing to the robot's reliability and performance.</div>|<div style="max-width: 300px; text-align: justify;">Ericka is the team’s <strong>programmer</strong>, responsible for writing and debugging the robot's code. She ensures that the robot can make real-time decisions and execute tasks with precision. Ericka has participated in <strong>WRO</strong> and brings her technical and problem-solving skills to every challenge.</div>| <div style="max-width: 300px; text-align: justify;">Patrick serves as the team’s <strong>designer</strong>. He focuses on the mechanical layout and overall functionality of the robot, balancing creativity with engineering. Patrick is also a returning <strong>WRO participant</strong>, constantly improving the robot's design through testing and iteration.</div>|
-
-| 🧠 Our Coach — Diego Delgado | 25 years old|
-|:----------------:|:------------------:|
-|<img width="600" alt="Luis" src="https://github.com/user-attachments/assets/51f8e8dd-d3c7-47c5-9601-674b6ca5e6eb"> |<div style="max-width: 300px; text-align: justify;">Diego is the team’s <strong>coach and mentor</strong>, guiding the team through strategy, planning, and technical reviews. He is the <strong>founder of Tekbot</strong>, an organization dedicated to promoting STEM and robotics education for children and young people. Diego is a <strong>former WRO participant</strong> himself and has also coached teams in <strong>FRC</strong>, offering a broad perspective and deep expertise in robotics education. </div>|
+<img width="1000" height="520" alt="AHHHHH_processed_by_imagy" src="https://github.com/user-attachments/assets/4d39ecf9-c464-4f2b-9efc-c3b949ed69be" />
+<img width="1000" height="2000" alt="BEHIND THE SCREENS (2)" src="https://github.com/user-attachments/assets/34d80203-9c0d-4e8b-a392-d2f8124f5f28" />
 
 ---
 # Vehicle Photos 📸
