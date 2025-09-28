@@ -703,6 +703,8 @@ Prints a message to inform the user that the system is ready and listening for t
 **Stay tuned for updates as we continue to improve our robot's performance and capabilities!**
 
 # References
+- 
+- https://docs.ultralytics.com/models/yolov8/
 - https://nerdvana.ro/wro-fe/
 - https://markdownlivepreview.com/
 - https://docs.opencv.org/3.4/da/d97/tutorial_threshold_inRange.html
