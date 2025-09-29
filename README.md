@@ -170,6 +170,10 @@ Our robot relies on a combination of vision (OpenCV + ML on Coral Accelerator) a
 
 ## Vision System
 
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/5609bb93-1abd-4938-874a-78750336fe9e" alt="Dataset samples" width="350"/>
+</p>
+
 - We use the Microsoft LifeCam HD-3000 connected to the Raspberry Pi. The Pi processes the camera feed with OpenCV and a Machine Learning model accelerated by Coral to:
 - Detect red and green blocks for obstacle avoidance.
 - Recognize the magenta parking spot to initiate the parking routine.
@@ -177,6 +181,11 @@ Our robot relies on a combination of vision (OpenCV + ML on Coral Accelerator) a
 - Send steering and speed commands to the Arduino Nano RP2040 over Serial.
 
 ## Ultrasonic Distance Sensing
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6b70fd23-10f5-44be-91a9-fc63dd27e047" alt="Dataset samples" width="350"/>
+</p>
+
 - The Arduino Nano RP2040 reads three HC-SR04 ultrasonic sensors (left, center, right) to:
     - Measure the robot’s distance from the walls.
     - Detect obstacles that may not be visible to the camera.
@@ -184,6 +193,7 @@ Our robot relies on a combination of vision (OpenCV + ML on Coral Accelerator) a
     - This multi-sensor approach ensures robust performance:
     - Vision + ML handles colored block detection, parking, and wall recognition.
     - Ultrasonics provide accurate distance measurements for safety and redundancy.
+      
 ## Machine Learning  
 
 To improve robustness, we trained a **custom object detection model** specifically for our robot’s environment.  
@@ -207,6 +217,10 @@ This pipeline allows the robot to run **real-time detection with low latency**, 
 
 # ⚔️ Challenge Strategies
 ## Open Challenge Strategy
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/407b5824-f865-4c18-9c02-1df7553b5fca" alt="YOLOv8 Training" width="100"/>
+</p>
 
 - **Start Command**  
   Wait for `'s'` on Serial1 before beginning navigation.
