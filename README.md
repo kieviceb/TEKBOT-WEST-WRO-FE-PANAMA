@@ -33,7 +33,10 @@
 
 ---
 # Vehicle Photos 📸
-![AHHHHH](https://github.com/user-attachments/assets/cb52b6d4-e43e-412f-b74b-98dca438176e)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/cb52b6d4-e43e-412f-b74b-98dca438176e" alt="TEKBOT (1)">
+</p>
+
 <img width="1000" height="1917" alt="Copia de BEHIND THE SCREENS" src="https://github.com/user-attachments/assets/b97cae86-9007-4df4-bbb8-74799222fe50" />
 
 
@@ -42,16 +45,20 @@ A list of all the electrical and mechanical components on the robot.
 
 | <img src="https://github.com/user-attachments/assets/719a51d8-4b14-402d-a462-ba1e4b071c2c" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3641b928-34c5-4d97-861c-fa08d40c9faa" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/3d5651d3-c8fe-4935-9561-6ca9d9c87a76" alt="Alt 1" width="200"/> | 
 | :------------: |:-------------:| :------------:|
-|[Raspberry Pi 5 - 8GB RAM x1](https://a.co/d/7e9fzE2)|[Microsoft LifeCam HD-3000 x1](https://a.co/d/66cNAOh)|[L298N motor driver x1](https://www.steren.com.pa/tarjeta-para-control-de-motores-cc-l298n.html)|
+|[RASPBERRY PI 5 - 8GB RAM x1](https://a.co/d/7e9fzE2)|[MICROSOFT LIFECAM HD-3000 x1](https://a.co/d/66cNAOh)|[L298N MOTOR DRIVER x1](https://www.steren.com.pa/tarjeta-para-control-de-motores-cc-l298n.html)|
 | <img src="https://github.com/user-attachments/assets/5b0ffc5d-ce02-4620-9849-15fdce566702" width="200"/> | <img src="https://github.com/user-attachments/assets/d4170adc-23b9-446f-bac0-1c50b966e00f" alt="Alt 1" width="200"/> | <img src="https://github.com/user-attachments/assets/db07c349-4f9f-4661-8327-3c710a5d41c6" alt="Alt 1" width="200"/> |
-| [Arduino NANO RP2040 connect x1](https://a.co/d/hI8sZ40) |[FUNDUINO kit chassis x1](https://a.co/d/fpJSHg1)|[Geekworm X1202 4-Cell 5V UPS Shiled+Active Cooler H505 x1](https://a.co/d/hs9rgxH) |
+|[ARDUINO NANO RP2040 CONNECT x1](https://a.co/d/hI8sZ40) |[FUNDUINO KIT CHASSIS x1](https://a.co/d/fpJSHg1)|[GEEKWORM X1202 4-Cell 5V UPS Shiled+Active Cooler H505 x1](https://a.co/d/hs9rgxH) |
 | <img src="https://github.com/user-attachments/assets/8002e73e-910a-462e-b991-5cd5c858e316" width="200"/> |<img src="https://github.com/user-attachments/assets/77157511-58ff-4ee8-9977-d3b53d906af6" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/86d8bf70-708b-426f-896a-9283a74d13df" alt="Alt 1" width="200"/> |
-|[Jumper wires](https://a.co/d/cw9IdJk)|[MG996R High Torque Metal Gear Servo x1](https://a.co/d/cRVAc0u)|[STEREN Li-ion 2800 mAh Rechargeable Battery x7](https://www.steren.com.pa/bateria-recargable-li-ion-2800-mah-tipo-18650-1.html)|
+|[JUMPER WIRES](https://a.co/d/cw9IdJk)|[MG996R METAL GEAR SERVO x1](https://a.co/d/cRVAc0u)|[STEREN Li-ion 2800 mAh RRECHARGABLE BATTERY x7](https://www.steren.com.pa/bateria-recargable-li-ion-2800-mah-tipo-18650-1.html)|
 | <img src="https://github.com/user-attachments/assets/ff93515e-6ec1-41f5-be4c-ac25b1e24010" width="200"/> |<img src="https://github.com/user-attachments/assets/44a5bca6-2fb6-49b7-8374-93a03705a72b" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/33ee1aaf-4750-4b80-978a-aab5d8d9adeb" alt="Alt 1" width="200"/> |
-|[Ultrasonic Distance Sensor x3](https://a.co/d/cxbABTR)|[LEGO EV3 DC motor](https://ebay.us/m/6vxrYN)|[Cooling fan x3](https://a.co/d/frwMkoA)|
+|[ULTRASONIC DISTANCE SENSOR x3](https://a.co/d/cxbABTR)|[LEGO EV3 DC MOTOR](https://ebay.us/m/6vxrYN)|[COOLING FAN x3](https://a.co/d/frwMkoA)|
 | <img src="https://github.com/user-attachments/assets/c4632267-e417-4f33-bfa0-a858d9f1e28e" width="200"/> |<img src="https://github.com/user-attachments/assets/dd5c7b13-b8ad-4aa0-9481-8411c9bf2b1a" alt="Alt 1" width="200"/>| <img src="https://github.com/user-attachments/assets/72f660f8-0134-4bb3-aa97-c8b0ae3c5f5a" alt="Alt 1" width="200"/> |
-|[Mini breadboard x1](https://a.co/d/0logMX9)|[Push button x1](https://a.co/d/70cfCgl)|[ 10K ohm Resistor x1](https://a.co/d/dTNRWBD)|
+|[MINI BREADBOARD x1](https://a.co/d/0logMX9)|[PUSH BUTTON x1](https://a.co/d/70cfCgl)|[10K OHM RESISTOR x1](https://a.co/d/dTNRWBD)|
 
+THE MAGIC
+| :------------: |
+| <img src="https://github.com/user-attachments/assets/be93e47a-3ca9-4626-8b98-f7ea953e2264" alt="Alt 1" width="200"/> |
+|[GOOGLE CORAL USB EDGE TPU ACCELARATOR x1](https://a.co/d/eEklwQk)|
 
 # ⚡Circuit diagram
 
@@ -101,15 +108,13 @@ Teams are evaluated based on their robot’s **accuracy**, **speed**, and the qu
 # ⚙️ Mobility Management
 
 ### Movement
-- **LEGO EV3 Large Motor** driven by an L298N H-bridge on the Arduino Nano RP2040, powered by a 3×18650 Li-ion pack (≈11.1 V) for high torque.
+- **LEGO EV3 DC Motor** driven by an L298N H-bridge on the Arduino Nano RP2040, powered by a 3×18650 Li-ion pack (≈11.1 V) for high torque.
 - PWM speed control (pin D3) and direction pins (D4/D5), with automatic halt if HC-SR04 front distance < threshold.
 - Receives speed & direction commands over Serial1 from the Raspberry Pi.
 
 ### Steering
-- **MG996R metal-gear servo** in an Ackermann linkage for accurate, repeatable turns.
-- Servo angles (60° left, 90° center, 120° right) sent as ASCII strings over Serial1 and output via PWM on D9.
-- Combines ultrasonic PD wall-following and IMU yaw-rate curve detection for smooth autonomous steering.
-
+- **MG996R metal-gear servo** in an Ackermann linkage for accurate, repeatable turns (pin D2).
+- Servo angles (20° left, 90° center, 155° right) sent as ASCII strings over Serial1 and output via PWM.
 
 # 🔋 Power Management
 
@@ -121,13 +126,13 @@ Our robot uses a streamlined power system for stable, efficient energy distribut
 - **Servo Power**  
   The MG996R steering servo draws its 5 V supply from the UPS module, ensuring stable, synchronized operation.
 
-- **Camera Power**  
-  The Microsoft LifeCam HD-3000 connects via USB to the Raspberry Pi and is powered through the UPS, eliminating separate camera power sources.
+- **Camera and CORAL accelerator Power**  
+  The Microsoft LifeCam HD-3000 and the CORAL connect via USB to the Raspberry Pi and is powered through the UPS, eliminating separate power sources.
 
 - **DC Motor Power**  
   The L298N H-bridge and DC motor are driven by a dedicated pack of three 18650 Li-ion cells in series (≈11.1 V), delivering the higher voltage and current the motor requires.
 
-This setup reduces weight, simplifies cabling, and guarantees reliable power under all operating conditions.  
+This setup guarantees reliable power under all operating conditions.  
 
 
 # 📡 Robot Communication
@@ -136,7 +141,7 @@ Our robot implements a structured communication system between its two core proc
 
 - The **Raspberry Pi** (SBC – Single Board Computer) acts as the **master**. It is responsible for high-level tasks such as image processing, object detection, strategy decision-making, and general system coordination.
 
-- The **Arduino Nano RP2040** (SBM – Secondary Board Microcontroller) acts as the **slave**. It is dedicated to real-time control of low-level hardware components, such as driving the servo motor and interpreting incoming instructions from the master.
+- The **Arduino Nano RP2040** (SBM – Secondary Board Microcontroller) acts as the **slave**. It is dedicated to real-time control of low-level hardware components, such as driving the servo motor, ultrasonic sensors, LEGO EV3 DC MOTOR and interpreting incoming instructions from the master.
 
 ### 🔁 Serial Communication
 
@@ -161,26 +166,44 @@ The system is optimized for efficiency and robustness in fast-paced robotic chal
 
 # 👁️ Sense and Object Detection
 
-Our robot relies on a combination of vision, ultrasonic sensing, and inertial measurement to understand its environment and make driving decisions.
+Our robot relies on a combination of vision (OpenCV + ML on Coral Accelerator) and ultrasonic sensing to understand its environment and make driving decisions.
 
-### Vision System  
-We use the Microsoft LifeCam HD-3000 with OpenCV on the Raspberry Pi. The Pi processes the camera feed to:  
-- Detect **red** and **green blocks** for obstacle avoidance.  
-- Recognize the **magenta parking spot** to initiate the parking routine.  
+## Vision System
+
+- We use the Microsoft LifeCam HD-3000 connected to the Raspberry Pi. The Pi processes the camera feed with OpenCV and a Machine Learning model accelerated by Coral to:
+- Detect red and green blocks for obstacle avoidance.
+- Recognize the magenta parking spot to initiate the parking routine.
+- Detect black walls and estimate their distance.
 - Send steering and speed commands to the Arduino Nano RP2040 over Serial.
 
-### Ultrasonic Wall Detection  
-The Arduino Nano RP2040 reads three HC-SR04 ultrasonic sensors (left, center, right) to:  
-- Measure distances to **black walls** on either side and in front.  
-- Trigger emergency avoidance maneuvers when walls are too close.
+## Ultrasonic Distance Sensing
+- The Arduino Nano RP2040 reads three HC-SR04 ultrasonic sensors (left, center, right) to:
+    - Measure the robot’s distance from the walls.
+    - Detect obstacles that may not be visible to the camera.
+    - Provide redundancy and safety in case of vision failure.
+    - This multi-sensor approach ensures robust performance:
+    - Vision + ML handles colored block detection, parking, and wall recognition.
+    - Ultrasonics provide accurate distance measurements for safety and redundancy.
+## Machine Learning  
 
-### IMU-Based Curve Detection  
-An IMU on the Arduino provides:  
-- Precise yaw (Z-axis) rate measurements.  
-- Automatic detection of each curve when the yaw rate exceeds a threshold.  
-- Curve counting (stop after **12** curves) and smooth turn control.
+To improve robustness, we trained a **custom object detection model** specifically for our robot’s environment.  
 
-This multi-sensor approach ensures robust performance: vision handles colored block and parking detection, ultrasonics handle wall avoidance, and the IMU guarantees accurate turn detection and counting.  
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/6a6bf5d5-deef-4753-a1c9-7cb3e5085e32" alt="Dataset samples" width="400"/>
+</p>
+
+- The dataset was built using **Roboflow** 👉 our data set [here](https://universe.roboflow.com/tekbot-west/tekbot-west-nacional-bbbm9/dataset/2).  
+- We collected and labeled images of **green/red blocks, walls, and parking spots** at different **distances, angles, and lighting conditions**, to ensure stable detection during competition with minimal calibration.  
+
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/8c8a763d-c597-4432-adf1-6ebd00906060" alt="YOLOv8 Training" width="400"/>
+</p>
+
+- The model uses the **YOLOv8 format**, which is well-suited for real-time detection thanks to its **lightweight architecture and speed** — ideal for embedded systems.  
+- Training was done in **Google Colab** using GPU acceleration.  
+- Finally, we exported the trained model to **TensorFlow Lite**, optimized for the **Coral Edge TPU accelerator** on the Raspberry Pi.  
+
+This pipeline allows the robot to run **real-time detection with low latency**, ensuring reliable navigation and obstacle avoidance.  
 
 # ⚔️ Challenge Strategies
 ## Open Challenge Strategy
