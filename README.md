@@ -216,12 +216,7 @@ To improve robustness, we trained a **custom object detection model** specifical
 This pipeline allows the robot to run **real-time detection with low latency**, ensuring reliable navigation and obstacle avoidance.  
 
 # ⚔️ Challenge Strategies
-## Open Challenge Strategy
-
-<p align="center">
-  <img src="https://github.com/user-attachments/assets/407b5824-f865-4c18-9c02-1df7553b5fca" alt="YOLOv8 Training" width="100"/>
-</p>
-
+## Open Challenge Strategy <img src="https://github.com/user-attachments/assets/407b5824-f865-4c18-9c02-1df7553b5fca" alt="Bandera de Panamá" width="40"/>
 - **Start Command**  
   Wait for `'s'` on Serial1 before beginning navigation.
 
@@ -232,44 +227,55 @@ This pipeline allows the robot to run **real-time detection with low latency**, 
   If center distance ≤ FRONT_MIN, halt motor; otherwise drive at fixed PWM speed.
 
 - **Emergency Side Avoidance**  
-  If left or right distance ≤ SIDE_MIN, immediately steer hard away (servo to 120° or 60°).
+  If left or right distance ≤ SIDE_MIN, immediately steer hard away (servo to 150° or 20°).
 
 - **PD Steering Control**  
-  When no emergency, compute error = dR − dL and derivative, apply Kp/Kd to adjust servo within ±30° deadzone around 90°.
+  When no emergency, compute error = dR − dL and derivative, apply Kp/Kd to adjust servo within +60° -70° o deadzone around 90°.  
+  This ensures smooth alignment between the two side walls.
 
-- **Curve Detection via IMU**  
-  Read MPU6050 gyro Z-axis; when |ωZ| > 30°/s detect a new turn, increment curveCount and prevent multiple counts during one turn.
+- **Lap Counting via Encoder**  
+  The IMU is no longer used. Instead, we rely on the wheel encoder:  
+  - Calibration showed that **10,000 encoder counts ≈ 30 cm of travel**.  
+  - Since each lap around the track is ~2 m, that corresponds to ~66,667 encoder counts.  
+  - Running multiple trials from different start positions, we computed a **median value** for 3 laps.  
+  - The robot stops when the encoder reading reaches this median threshold, ensuring reliable lap counting independent of curves.
 
 - **Completion Condition**  
-  Stop motor and center servo once 12 curves have been counted; remain halted.
+  Stop motor and center servo once the encoder threshold for 3 laps is reached; remain halted.
 
 - **Serial Feedback**  
-  Print “Curve #n” and status messages over Serial1 for real-time monitoring.
+  Print encoder values, lap progress, and status messages over Serial1 for real-time monitoring.
 
-## Obstacle Challenge Strategy
+## Obstacle Challenge Strategy <img src="https://github.com/user-attachments/assets/e833c70a-b1fc-4165-ae0d-35a571c72e85" alt="Bandera de Panamá" width="40"/>
 
-- **ROI & LAB Masking**  
-  Convert the ROI to LAB and extract masks for red, green, orange (and black guide lines), boosting precision and efficiency.
+- **Start & Exit Detection**  
+  At the beginning, the robot uses **ultrasonic sensors** to measure wall distances and determine **which side it exits from the parking area**.  
+  This defines its initial orientation on the track.
 
-- **Contour Detection**  
-  Find contours on each LAB mask to compute block centroids and areas.
-![WhatsApp Image 2025-07-31 at 20 11 59_a4aa4e94](https://github.com/user-attachments/assets/e9547dd8-7004-4965-af65-36867bd807ac)
-- **Block Turns**  
-  - **Red →** right turn (servo 120°)  
-  - **Green →** left turn (servo 58°)  
-  Hold the command until the block exits the frame.
+- **Machine Learning Object Detection**  
+  Instead of simple LAB masking, we use a **YOLOv8-based model** (dataset and labels in Roboflow, trained in Google Colab and exported to TensorFlow Lite, and accelerated with Coral).  
+  The model detects **red blocks, green blocks, black walls, and the magenta parking zone** in real time.  
 
-- **Line Tracking**  
-  Use a black-line LAB mask to keep alignment during and after turns.
+- **Block Evasion Strategy**  
+  When a block is detected:  
+  - **Red →** compute a temporary target position **to the right side** and steer the robot to bypass the block.  
+  - **Green →** compute a temporary target position **to the left side** for evasion.  
+  The robot continues toward this evasion target until the block is cleared, then smoothly returns to its central trajectory.  
 
-- **Stage Counting**  
-  Increment on each orange line detected; stop after **12** crossings.
+- **Lap Counting via Parking Detection**  
+  Instead of counting curves or encoder ticks, the robot uses **ML detection of the magenta parking spot** as a lap marker.  
+  - Each time the robot passes the parking, the counter increases by **1 lap**.  
+  - After **3 passes (3 laps)**, the robot transitions to the final parking stage.  
 
-- **Serial Steering & Motor**  
-  Send `S<angle>` over Serial to Arduino; motor runs forward continuously unless the final stop is reached.
+- **PD Steering Control**  
+  During normal navigation, the robot still uses **PD control** based on ultrasonic side distances (`dR - dL`) to stay centered in the lane, ensuring smooth driving even without visible blocks.  
 
-- **Final Parking**  
-  Detect magenta markers in LAB space to initiate a parallel-parking routine.
+- **Final Parking Routine**  
+  Once 3 laps are completed, the robot searches for the **magenta parking zone** using ML detection.  
+  Upon recognition, it executes a **parallel parking maneuver**, aligning itself precisely inside the designated parking spot.  
+
+- **Serial Communication**  
+  All steering (`S<angle>`) and motor commands are sent from the Raspberry Pi to the Arduino Nano via Serial, ensuring synchronized control.
 
 
 # `</>` Into the codes (code explanations)
