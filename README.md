@@ -8,7 +8,10 @@
 [![Facebook](https://img.shields.io/badge/YouTube-%23E4445F.svg?style=for-the-badge&logo=Youtube&logoColor=white)](https://www.youtube.com/@TEKBOT_LAB)
 
 
-
+> [!NOTE]
+> This github repository contains many illustrative content such as images,
+> gifs and video, so wait till is fully refresh to see it in its entirety.  
+> 
 # 🐙 Repo's folder structure/overview
 ```
 📦 TEKBOT-WEST-WRO-FE
@@ -30,7 +33,9 @@
 
 ---
 # Vehicle Photos 📸
-<img width="1000" height="1500" alt="meet the team (2)" src="https://github.com/user-attachments/assets/be8bfb1d-6f9f-4342-a1d1-7f9fee7343f5" />
+![AHHHHH](https://github.com/user-attachments/assets/cb52b6d4-e43e-412f-b74b-98dca438176e)
+<img width="1000" height="1917" alt="Copia de BEHIND THE SCREENS" src="https://github.com/user-attachments/assets/b97cae86-9007-4df4-bbb8-74799222fe50" />
+
 
 # Components 🧱
 A list of all the electrical and mechanical components on the robot.
