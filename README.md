@@ -279,178 +279,77 @@ This pipeline allows the robot to run **real-time detection with low latency**, 
 
 
 # `</>` Into the codes (code explanations)
-## 1. **Open Challenge code**
-- **Include Libraries**
-  ```cpp
-  #include <Wire.h>
-  #include <MPU6050.h>
-  #include <Servo.h>
-These headers let us use I²C (Wire) to communicate with the MPU6050 IMU, access the IMU’s functions, and drive a steering servo.
--Define Pins & Constants
-```cpp
-// HC-SR04 ultrasonic sensors
-const int TRIG_LEFT   = 6;
-const int ECHO_LEFT   = 7;
-const int TRIG_CENT   = 8;
-const int ECHO_CENT   = 9;
-const int TRIG_RIGHT  = 10;
-const int ECHO_RIGHT  = 11;
+# `</>` Into the codes (code explanations)
 
-// Steering servo and motor H-bridge
-const int SERVO_PIN   = 2;
-const int ENB         = 3;
-const int IN3         = 4;
-const int IN4         = 5;
+## 1. **Open Challenge Code — Main loop (core)**
+> To keep this README concise, here we only explain the **main loop** (the core logic).  
+> A complete explanation and all helper functions can be found in the [`/src`](./src) folder.  
 
-// PD control gains
-const float Kp = 0.5;
-const float Kd = 0.1;
-
-// Safety thresholds (cm)
-const float SIDE_MIN_LEFT  = 17.0;
-const float SIDE_MIN_RIGHT = 16.0;
-const float FRONT_MIN      = 16.0;
-
-// Servo limits
-const int SERVO_CENTER    = 90;
-const int SERVO_MAX_LEFT  = 60;
-const int SERVO_MAX_RIGHT = 120;
-const int SERVO_DEADZONE  = 30;
-
-// Motor speed (0–255 PWM)
-const int MOTOR_SPEED = 200;
-```
-These constants map the sensor and actuator pins, set the PD controller gains, safety distance thresholds, servo angle limits, and the fixed motor speed.
--Global Objects & State
-```cpp
-Servo    steeringServo;
-MPU6050  imu;
-
-bool          started    = false;  // Has 's' been received on Serial1?
-int           curveCount = 0;      // Number of curves detected
-bool          turning    = false;  // Currently in a turn?
-float         prevError  = 0;
-unsigned long prevTime;
-```
-We create the servo and IMU objects, plus variables to track whether the robot has started, how many curves it’s made (via gyro), the turning state, and timing for the PD controller.
-
--Setup Function
-```cpp
-void setup() {
-  // 1) Serial1 for start command
-  Serial1.begin(115200);
-  Serial1.println("Waiting for 's' to start…");
-
-  // 2) Initialize IMU over I²C
-  Wire.begin();
-  imu.initialize();
-  if (!imu.testConnection()) {
-    Serial1.println("IMU not found!");
-    while(true); // Halt if IMU missing
-  }
-  Serial1.println("IMU initialized.");
-
-  // 3) Configure sensor & actuator pins
-  pinMode(TRIG_LEFT, OUTPUT);  pinMode(ECHO_LEFT, INPUT);
-  pinMode(TRIG_CENT, OUTPUT);  pinMode(ECHO_CENT, INPUT);
-  pinMode(TRIG_RIGHT, OUTPUT); pinMode(ECHO_RIGHT, INPUT);
-
-  steeringServo.attach(SERVO_PIN);
-  steeringServo.write(SERVO_CENTER);
-
-  pinMode(ENB, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-  digitalWrite(IN3, HIGH); // forward
-  digitalWrite(IN4, LOW);
-
-  prevTime = micros();
-}
-```
--Serial1 listens for 's' to begin
--IMU is initialized and tested
--Pins for sensors, servo, and motor are configured and centered
-Main Loop
 ```cpp
 void loop() {
-  // A) Wait for 's' on Serial1
+
   if (!started) {
     if (Serial1.available() && Serial1.read() == 's') {
       started = true;
       Serial1.println("Starting navigation…");
+      prevTime = micros();       // reset PD timing
+      prevError = 0;
     } else {
-      return; // idle until start
+      return;                    // stay idle until 's' is received
     }
   }
-
-  // B) Read distances
-  float dL = readUltrasonic(TRIG_LEFT,  ECHO_LEFT);
-  float dC = readUltrasonic(TRIG_CENT,  ECHO_CENT);
-  float dR = readUltrasonic(TRIG_RIGHT, ECHO_RIGHT);
-
-  // C) Front obstacle → stop or go
-  if (dC <= FRONT_MIN)        analogWrite(ENB, 0);
-  else                        analogWrite(ENB, MOTOR_SPEED);
-
-  // D) Emergency side avoidance or PD steering
-  if (dL <= SIDE_MIN_LEFT)    steeringServo.write(SERVO_MAX_RIGHT);
-  else if (dR <= SIDE_MIN_RIGHT) steeringServo.write(SERVO_MAX_LEFT);
-  else {
-    unsigned long now = micros();
-    float dt = (now - prevTime) / 1e6;
-    prevTime = now;
-    float error = dR - dL;
-    float dErr  = (error - prevError) / dt;
-    prevError   = error;
-    int delta = constrain(int(Kp*error + Kd*dErr),
-                          -SERVO_DEADZONE, SERVO_DEADZONE);
-    steeringServo.write(SERVO_CENTER + delta);
-  }
-
-  // E) Curve detection via IMU gyro Z-axis
-  float gyroZ = imu.getRotationZ() / 131.0;  // °/s
-  const float TURN_THRESHOLD = 30.0;
-  if (abs(gyroZ) > TURN_THRESHOLD) {
-    if (!turning) {
-      turning = true;
-      curveCount++;
-      Serial1.print("Curve #"); Serial1.println(curveCount);
-    }
-  } else {
-    turning = false;
-  }
-
-  // F) Stop after 12 curves
-  if (curveCount >= 12) {
-    analogWrite(ENB, 0);
-    steeringServo.write(SERVO_CENTER);
-    Serial1.println("12 curves reached—stopping.");
-    while(true);
-  }
-
-  delay(50); // ~20 Hz
-}
 ```
--Start check: waits for 's'
--Read sensors: left, center, right
--Front control: stop or run motor
--Side avoidance & PD steering: emergency or smooth control
--Curve detection: increment count when gyro Z exceeds threshold
--Stop condition: halt when 12 curves detected
--Utility: Ultrasonic Read
+-  Wait for the start command over Serial1 ('s')
 ```cpp
-float readUltrasonic(int trigPin, int echoPin) {
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-  long duration = pulseIn(echoPin, HIGH, 30000);
-  if (duration == 0) return 300; 
-  return duration * 0.0343 / 2.0;  // cm
-}
+ 
+  float dL = readUltrasonic(TRIG_LEFT,  ECHO_LEFT);   // left wall/obstacle
+  float dC = readUltrasonic(TRIG_CENT,  ECHO_CENT);   // front obstacle
+  float dR = readUltrasonic(TRIG_RIGHT, ECHO_RIGHT);  // right wall/obstacle
+
+  // C) Front obstacle handling: stop if too close, otherwise run motor at fixed PWM
+  if (dC <= FRONT_MIN) {
+    analogWrite(ENB, 0);                 // stop motor
+  } else {
+    analogWrite(ENB, MOTOR_SPEED);       // forward at constant speed
+  }
 ```
-Triggers the HC-SR04 sensor, measures echo pulse width, and converts it to distance in centimeters.
+- Read distances (cm) from the 3 HC-SR04 ultrasonic sensors
+```cpp
+  if (dL <= SIDE_MIN_LEFT) {
+    steeringServo.write(SERVO_MAX_RIGHT);  // steer right
+  }
+  else if (dR <= SIDE_MIN_RIGHT) {
+    steeringServo.write(SERVO_MAX_LEFT);   // steer left
+  }
+  else {
+```
+ - Emergency side avoidance: steer hard away if a wall is too close
+```cpp
+    unsigned long now = micros();
+    float dt = (now - prevTime) / 1e6;     // seconds
+    prevTime = now;
+
+    float error = dR - dL;                  // if dR>dL → robot is too close to left wall
+    float dErr  = (error - prevError) / max(dt, 1e-3f);
+    prevError   = error;
+
+    int delta = constrain(int(Kp*error + Kd*dErr), -SERVO_DEADZONE, SERVO_DEADZONE);
+    steeringServo.write(SERVO_CENTER + delta);  // adjust steering within limits
+  }
+```
+- PD control for smooth centering when no emergency
+```cpp
+  if (encoderTicks >= ENCODER_3LAPS) {
+    analogWrite(ENB, 0);                   // stop motor
+    steeringServo.write(SERVO_CENTER);     // center steering
+    Serial1.println("3 laps (median) reached — stopping.");
+    while (true) { /* halt */ }            // end of challenge
+  }
+```
+- Lap counting using the encoder 
+Calibration: 10,000 ticks ≈ 30 cm → 1 lap (~2.0 m) ≈ 66,667 ticks
+3 laps ≈ ~200,000 ticks. After several trials we set ENCODER_3LAPS to the median value.
+ (encoderTicks is updated in the ISR or encoder routine outside this loop.)
 
 ## 2. **Obstacle Challenge code**
 Import libraries
