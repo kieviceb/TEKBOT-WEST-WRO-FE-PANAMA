@@ -705,6 +705,7 @@ Prints a message to inform the user that the system is ready and listening for t
 # References
 - 
 - https://docs.ultralytics.com/models/yolov8/
+- https://colab.research.google.com/github/roboflow/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb
 - https://nerdvana.ro/wro-fe/
 - https://markdownlivepreview.com/
 - https://docs.opencv.org/3.4/da/d97/tutorial_threshold_inRange.html
