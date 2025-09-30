@@ -350,215 +350,119 @@ Calibration: 10,000 ticks ≈ 30 cm → 1 lap (~2.0 m) ≈ 66,667 ticks
  (encoderTicks is updated in the ISR or encoder routine outside this loop.)
 
 ## 2. **Obstacle Challenge code**
-Import libraries
-```python
-import cv2
-import numpy as np
-import serial
-import time
-from gpiozero import Motor, PWMOutputDevice
-```
-Handles camera access, image processing, numerical operations, motor control, and serial communication with Arduino.
 
-- Serial connection setup
 ```python
-arduino = serial.Serial("/dev/serial0", baudrate=9600, timeout=1)
-time.sleep(2)
-```
-Establishes a UART connection between the Raspberry Pi and Arduino with a short delay to stabilize communication.
-
-- Motor and speed setup
-```python
-motor = Motor(forward=20, backward=21)
-velocidad = PWMOutputDevice(12)
-velocidad.value = 0.85
-```
-Configures GPIO pins for motor direction and sets PWM speed to 85%.
-
-- Camera setup
-```python
-cap = cv2.VideoCapture(0)
-cv2.namedWindow("Vista Completa", cv2.WINDOW_NORMAL)
-cv2.resizeWindow("Vista Completa", 800, 600)
-```
-Initializes the camera and creates a display window for visual feedback.
-
-- Control and state variables
-```python
-lineas_detectadas = 0
-umbral_linea = 1000
-umbral_bloque = 800
-linea_detectada = False
-girando = False
-direccion_giro = None
-
-red_limit_x = 170
-green_limit_x = 470
-```
-Tracks the state of line detection, block turns, and defines positional thresholds to determine when a block has passed.
-
-- Helper function to find mask centroid
-```python
-def obtener_centro(mask):
-    M = cv2.moments(mask)
-    if M["m00"] != 0:
-        cx = int(M["m10"] / M["m00"])
-        return cx
-    return None
-```
-Calculates the X-coordinate of the centroid of a binary mask. Used to know where a block is in the frame.
-
-- Frame capture
-```python
-ret, frame = cap.read()
-if not ret:
+ok, frame = cap.read()
+if not ok:
     continue
-```
-Reads the current frame from the camera. If the read fails, the loop skips to the next iteration.
 
-- Block detection (red and green)
+Hf, Wf = frame.shape[:2]
+y_min  = int(ROI_Y_MIN_RATIO * Hf)
+x_l    = int(ROI_X_MARGIN * Wf)
+x_r    = int((1.0 - ROI_X_MARGIN) * Wf)
+```
+read a frame and prepare ROI bands (bottom-focused + side margins)
+Grab the camera frame and compute the active ROI: ignore the top band and a small margin on both sides to reduce false triggers and focus on near-field decisions.
+
 ```python
-roi_bloques = frame[200:320, :]
-hsv_bloques = cv2.cvtColor(roi_bloques, cv2.COLOR_BGR2HSV)
-
-# Red mask
-lower_red1 = np.array([0, 120, 120])
-upper_red1 = np.array([10, 255, 255])
-lower_red2 = np.array([160, 120, 120])
-upper_red2 = np.array([179, 255, 255])
-mask_red = cv2.inRange(hsv_bloques, lower_red1, upper_red1) | cv2.inRange(hsv_bloques, lower_red2, upper_red2)
-
-# Green mask
-lower_green = np.array([85, 100, 100])
-upper_green = np.array([100, 255, 255])
-mask_green = cv2.inRange(hsv_bloques, lower_green, upper_green)
-
-area_rojo = cv2.countNonZero(mask_red)
-area_green = cv2.countNonZero(mask_green)
-cx_rojo = obtener_centro(mask_red)
-cx_green = obtener_centro(mask_green)
+rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+inp = cv2.resize(rgb, (in_w, in_h), interpolation=cv2.INTER_LINEAR)
 ```
-Detects red and green blocks based on HSV color ranges and calculates their positions and areas.
-
-- Black line detection
+preprocess and run YOLOv8 (EdgeTPU) inference
 ```python
-roi_nav = frame[160:280, :]
-gray = cv2.cvtColor(roi_nav, cv2.COLOR_BGR2GRAY)
-_, mask_black = cv2.threshold(gray, 50, 255, cv2.THRESH_BINARY_INV)
-
-width = mask_black.shape[1]
-third = width // 3
-left_black = cv2.countNonZero(mask_black[:, 0:third])
-center_black = cv2.countNonZero(mask_black[:, third:2*third])
-right_black = cv2.countNonZero(mask_black[:, 2*third:3*third])
+_interpreter.set_tensor(_input_details[0]['index'], np.expand_dims(inp, 0))
+_interpreter.invoke()
+out0 = _interpreter.get_tensor(_output_details[0]['index'])
+dets = parse_yolov8_tflite(out0, _output_details[0], Wf, Hf, CONF_THRESH, NMS_IOU, _labels)
 ```
-Uses a grayscale region to isolate the black navigation line and counts how many black pixels are in each section.
+Convert to RGB, resize to model input, invoke TFLite + EdgeTPU, then parse outputs (dequantize, class scores, NMS) into frame-space detections.
 
-- Turning and navigation logic
 ```python
-direction = 'C'
-```
-Initial direction is centered.
+valid_L = valid_R = False
+has_pklot = False
 
-If turning based on block previously detected:
+for d in dets:
+    x, y, w, h, name = d['x'], d['y'], d['w'], d['h'], d['name']
+    cx, cy = x + w//2, y + h//2
+
+    in_roi = (cy >= y_min) and (x >= x_l) and (x + w <= x_r)
+    near   = (cy >= int(NEAR_Y_RATIO * Hf))
+
+    if not in_roi:
+        continue
+
+    if name == CLASS_GBLOCK and near:
+        valid_L = True    # green → plan left bypass
+    elif name == CLASS_RBLOCK and near:
+        valid_R = True    # red → plan right bypass
+    elif name == CLASS_PKLOT:
+        has_pklot = True  # parking marker seen
+```
+scan detections to set intent flags (valid_L/valid_R) and see PKLOT
+For each detection: check ROI and near-field; flag left/right evasion intent from block color; flag PKLOT for lap counting.
+
 ```python
-if girando:
-    if direccion_giro == 'R':
-        if cx_rojo is not None and cx_rojo <= red_limit_x:
-            girando = False
-            direccion_giro = None
-        elif right_black > 300:
-            direction = 'C'
-        else:
-            direction = 'R'
-    elif direccion_giro == 'L':
-        if cx_green is not None and cx_green >= green_limit_x:
-            girando = False
-            direccion_giro = None
-        elif left_black > 300:
-            direction = 'C'
-        else:
-            direction = 'L'
+now = time.time()
+if has_pklot and (now - pklot_last_seen_t) > PKLOT_DEBOUNCE_SEC:
+    pklot_last_seen_t = now
+    pklot_count += 1
+    if (pklot_count >= PKLOT_TARGET_COUNT) and not parking_mode:
+        parking_mode = True
+        if ser: ser.write(b"PARK\n")
 ```
-If not currently turning:
+debounced PKLOT counting; switch to PARK after N passes
+Use a debounce window to avoid multiple counts per pass; after 3 PKLOT sightings, enter PARK mode and notify the Arduino.
+
 ```python
-else:
-    if area_rojo > umbral_bloque and cx_rojo is not None:
-        direccion_giro = 'R'
-        girando = True
-        direction = 'R'
-    elif area_green > umbral_bloque and cx_green is not None:
-        direccion_giro = 'L'
-        girando = True
-        direction = 'L'
-    else:
-        min_black = min(left_black, center_black, right_black)
-        if min_black == center_black:
-            direction = 'C'
-        elif min_black == left_black:
-            direction = 'L'
-        elif min_black == right_black:
-            direction = 'R'
-```
-Controls the robot’s turning behavior based on detected blocks and black line regions.
+cooldown_ok = (now - last_cmd_t) >= COOLDOWN_SEC
+streak_L = streak_L + 1 if valid_L else 0
+streak_R = streak_R + 1 if valid_R else 0
 
-- Orange line detection for stopping
+send_L = cooldown_ok and (streak_L >= TRIGGER_FRAMES) and not parking_mode
+send_R = cooldown_ok and (streak_R >= TRIGGER_FRAMES) and not parking_mode
+
+if send_L or send_R:
+    cmd = "PATH L" if send_L else "PATH R"
+    if ser: ser.write((cmd + "\n").encode("ascii"))
+    last_cmd_t = now
+    streak_L = streak_R = 0
+```
+PATH decision: cooldown + streak of valid frames
+Require a minimum streak of consecutive frames before acting, and enforce a cooldown so you send only one high-level command (PATH L/PATH R) per window. Suppress PATH when already in PARK mode.
+
 ```python
-roi_linea = frame[400:480, :]
-hsv = cv2.cvtColor(roi_linea, cv2.COLOR_BGR2HSV)
-lower_orange = np.array([10, 150, 150])
-upper_orange = np.array([25, 255, 255])
-mask_linea = cv2.inRange(hsv, lower_orange, upper_orange)
-area_linea = cv2.countNonZero(mask_linea)
-
-if area_linea > umbral_linea and not linea_detectada and lineas_detectadas < 12:
-    lineas_detectadas += 1
-    linea_detectada = True
-    time.sleep(1)
-
-if area_linea <= umbral_linea:
-    linea_detectada = False
-
-if lineas_detectadas >= 12:
-    direction = 'S'
-    motor.stop()
-else:
-    motor.forward()
+if SEND_STEER_TOWARD_WAYPOINT and aim_points:
+    aim_x, aim_y = aim_points[-1]             # latest proposed lateral pass point
+    sdeg = steer_towards_x(aim_x, Wf)         # map lateral error to servo [0..180]
+    if ser: ser.write(f"S {sdeg}\n".encode("ascii"))
 ```
-Counts the number of orange lines the robot crosses. Stops movement after 12 detections.
+(optional) send direct steering toward lateral waypoint
+Optionally bias steering directly toward the computed waypoint beside the block; main evasion still uses PATH L/R.
 
-- Send servo angle to Arduino
 ```python
-if direction == 'L':
-    angulo = '58'
-elif direction == 'C':
-    angulo = '90'
-elif direction == 'R':
-    angulo = '120'
-else:
-    angulo = '90'
+cv2.line(frame, (0, y_min), (Wf, y_min), (255,255,0), 1)
+cv2.rectangle(frame, (x_l, 0), (x_r, Hf), (255,255,0), 1)
+cv2.putText(frame, f"PKLOT:{pklot_count}  MODE:{'PARK' if parking_mode else 'RUN'}",
+            (6, Hf-8), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (0,255,255), 2)
 
-arduino.write((angulo + "\n").encode())
+cv2.imshow("Coral YOLOv8 -> Serial", frame)
+if (cv2.waitKey(1) & 0xFF) == ord('q'):
+    break
 ```
-Maps the movement direction to a specific servo angle and sends the command to the Arduino for steering.
+overlays & exit handling
+Draw ROI and status overlays; show the preview; quit cleanly on q.
+
+```python
+if ser:
+    ser.write(b"STOP\n")
+    ser.close()
+cap.release()
+cv2.destroyAllWindows()
+```
+on exit: stop and cleanup
+Send a final STOP, close serial and camera, destroy windows.
 
 ## 3. **Servo control code**
-- Include libraries
-```ino
-#include <Servo.h>
-#include <math.h>
-```
-The Servo.h library is included to control servo motors. math.h is included for compatibility but is not directly used in this code.
-
-- Variable and object declarations
-```ino
-Servo miServo;
-int pinServo = 2;
-String comando = "";
-unsigned long ultimoEnvio = 0;
-const unsigned long intervalo = 100;
-```
-The miServo object is created to control the servo motor. pinServo sets the pin connected to the servo signal wire. The comando variable stores incoming serial commands as a string. ultimoEnvio and intervalo are reserved for timing tasks but are unused here.
 
 - Setup function
 ```ino
