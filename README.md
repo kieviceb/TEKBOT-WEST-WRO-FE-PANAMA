@@ -8,7 +8,7 @@
 [![Facebook](https://img.shields.io/badge/YouTube-%23E4445F.svg?style=for-the-badge&logo=Youtube&logoColor=white)](https://www.youtube.com/@TEKBOT_LAB)
 
 
-> [!NOTE]
+> [!NOTE] 
 > This github repository contains many illustrative content such as images,
 > gifs and video, so wait till is fully refresh to see it in its entirety.  
 > 
@@ -16,6 +16,7 @@
 ```
 📦 TEKBOT-WEST-WRO-FE
 ├── 📁 3D_printables # 3D models ready for printing robot components
+├── 📁 MACHINE LEARNING MODEL # contains the trained model for the CORAL accelerator
 ├── 📁 schemes # Wiring and schematic diagram
 ├── 📁 src # Source code for robot control and challenge algorithms
 ├── 📁 team photos # Photos of the team 
@@ -216,9 +217,9 @@ To improve robustness, we trained a **custom object detection model** specifical
 This pipeline allows the robot to run **real-time detection with low latency**, ensuring reliable navigation and obstacle avoidance.  
 
 # ⚔️ Challenge Strategies
-## Open Challenge Strategy <img src="https://github.com/user-attachments/assets/407b5824-f865-4c18-9c02-1df7553b5fca" alt="Bandera de Panamá" width="40"/>
+## Open Challenge Strategy 
 - **Start Command**  
-  Wait for `'s'` on Serial1 before beginning navigation.
+  When button is start button is pressed on the Raspberry pi sends `'s'` on Serial1 before beginning navigation.
 
 - **Ultrasonic Sensing**  
   Continuously read left, center and right HC-SR04 sensors for obstacle distances.
@@ -246,8 +247,7 @@ This pipeline allows the robot to run **real-time detection with low latency**, 
 - **Serial Feedback**  
   Print encoder values, lap progress, and status messages over Serial1 for real-time monitoring.
 
-## Obstacle Challenge Strategy <img src="https://github.com/user-attachments/assets/e833c70a-b1fc-4165-ae0d-35a571c72e85" alt="Bandera de Panamá" width="40"/>
-
+## Obstacle Challenge Strategy 
 - **Start & Exit Detection**  
   At the beginning, the robot uses **ultrasonic sensors** to measure wall distances and determine **which side it exits from the parking area**.  
   This defines its initial orientation on the track.
@@ -277,8 +277,6 @@ This pipeline allows the robot to run **real-time detection with low latency**, 
 - **Serial Communication**  
   All steering (`S<angle>`) and motor commands are sent from the Raspberry Pi to the Arduino Nano via Serial, ensuring synchronized control.
 
-
-# `</>` Into the codes (code explanations)
 # `</>` Into the codes (code explanations)
 
 ## 1. **Open Challenge Code — Main loop (core)**
@@ -289,7 +287,7 @@ This pipeline allows the robot to run **real-time detection with low latency**, 
 void loop() {
 
   if (!started) {
-    if (Serial1.available() && Serial1.read() == 's') {
+    if (Serial1.available() && Serial1.read() == 's') { //button pressed on raspberry pi sends the command to start
       started = true;
       Serial1.println("Starting navigation…");
       prevTime = micros();       // reset PD timing
@@ -626,7 +624,7 @@ A Button object is created and linked to GPIO pin 16, which is physically connec
 ```python
 def ejecutar_programa():
     print("Button pressed! Running the main program...")
-    subprocess.run(["python3", "/home/diego/WRO_Ingeniero/otracosaahi.py"])
+    subprocess.run(["python3", "/home/frankie/WRO_Ingeniero/execute.py"])
 ```
 This function runs when the button is pressed. It prints a message to the terminal indicating the button press and then uses subprocess.run to execute another Python script (otracosaahi.py), which is the robot’s main control program. The path must be correct and the script must be executable.
 
