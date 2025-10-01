@@ -1,176 +1,196 @@
 
 ## 1. **Open Challenge code**
-- **Include Libraries**
-  ```cpp
-  #include <Wire.h>
-  #include <MPU6050.h>
-  #include <Servo.h>
-These headers let us use I²C (Wire) to communicate with the MPU6050 IMU, access the IMU’s functions, and drive a steering servo.
--Define Pins & Constants
-```cpp
-// HC-SR04 ultrasonic sensors
-const int TRIG_LEFT   = 6;
-const int ECHO_LEFT   = 7;
-const int TRIG_CENT   = 8;
-const int ECHO_CENT   = 9;
-const int TRIG_RIGHT  = 10;
-const int ECHO_RIGHT  = 11;
+#include <Servo.h>  // Include the Servo library to control a hobby servo motor
 
-// Steering servo and motor H-bridge
-const int SERVO_PIN   = 2;
-const int ENB         = 3;
-const int IN3         = 4;
-const int IN4         = 5;
+// —— ULTRASONIC SENSOR PINOUT ——  
+// These pins are connected to three ultrasonic distance sensors: left, center, and right
+const int TRIG_LEFT   = 6;   // Trigger pin for the left ultrasonic sensor
+const int ECHO_LEFT   = 7;   // Echo pin for the left ultrasonic sensor
+const int TRIG_CENT   = 8;   // Trigger pin for the center ultrasonic sensor
+const int ECHO_CENT   = 9;   // Echo pin for the center ultrasonic sensor
+const int TRIG_RIGHT  = 10;  // Trigger pin for the right ultrasonic sensor
+const int ECHO_RIGHT  = 11;  // Echo pin for the right ultrasonic sensor
 
-// PD control gains
-const float Kp = 0.5;
-const float Kd = 0.1;
+// —— ACTUATOR PINOUT ——  
+// Pins to control the servo (steering) and a motor (via H-bridge L298N)
+const int SERVO_PIN      = 2;   // Servo control pin
+const int ENB            = 3;   // Motor speed pin (PWM)
+const int IN3            = 4;   // Motor direction pin
+const int IN4            = 5;   // Motor direction pin
 
-// Safety thresholds (cm)
-const float SIDE_MIN_LEFT  = 17.0;
-const float SIDE_MIN_RIGHT = 16.0;
-const float FRONT_MIN      = 16.0;
+// —— CONTROL PARAMETERS (PD controller) ——  
+const float Kp           = 0.5;   // Proportional gain for PD control
+const float Kd           = 0.1;   // Derivative gain for PD control
+float prevError          = 0;     // Previous error value for derivative calculation
+unsigned long prevTime   = 0;     // Previous time in microseconds for derivative calculation
 
-// Servo limits
-const int SERVO_CENTER    = 90;
-const int SERVO_MAX_LEFT  = 60;
-const int SERVO_MAX_RIGHT = 120;
-const int SERVO_DEADZONE  = 30;
+// —— SAFETY THRESHOLDS IN CM ——  
+const float SIDE_MIN_LEFT   = 17.0;  // Minimum allowed distance on left side
+const float SIDE_MIN_RIGHT  = 18.5;  // Minimum allowed distance on right side
+const float FRONT_MIN       = 25.0;  // Minimum allowed distance in front
 
-// Motor speed (0–255 PWM)
-const int MOTOR_SPEED = 200;
-```
-These constants map the sensor and actuator pins, set the PD controller gains, safety distance thresholds, servo angle limits, and the fixed motor speed.
--Global Objects & State
-```cpp
-Servo    steeringServo;
-MPU6050  imu;
+// —— SERVO LIMITS ——  
+const int SERVO_CENTER      = 90;   // Center position of servo (straight)
+const int SERVO_MAX_LEFT    = 20;   // Maximum left steering angle
+const int SERVO_MAX_RIGHT   = 150;  // Maximum right steering angle
+const int SERVO_DEADZONE    = 60;   // Maximum deviation allowed for PD output
 
-bool          started    = false;  // Has 's' been received on Serial1?
-int           curveCount = 0;      // Number of curves detected
-bool          turning    = false;  // Currently in a turn?
-float         prevError  = 0;
-unsigned long prevTime;
-```
-We create the servo and IMU objects, plus variables to track whether the robot has started, how many curves it’s made (via gyro), the turning state, and timing for the PD controller.
+// —— FIXED MOTOR SPEED ——  
+const int MOTOR_SPEED       = 200;  // PWM value for motor speed (0–255)
 
--Setup Function
-```cpp
+Servo steeringServo;  // Create Servo object for steering
+
+// ==================== ENCODER SETUP ====================
+// Pins for quadrature encoder
+const uint8_t ENC_B = 12;   // Encoder channel B
+const uint8_t ENC_A = 13;   // Encoder channel A
+
+volatile long encoderCount = 0;    // Counter for encoder ticks (volatile because updated in ISR)
+volatile uint8_t prevAB = 0;       // Previous state of encoder channels
+
+// Quadrature table for determining rotation direction
+int8_t quad_table[16] = {
+  0, -1, +1,  0,
+  +1, 0,  0, -1,
+  -1, 0,  0, +1,
+   0, +1, -1,  0
+};
+
+const long STOP_COUNTS = 2000;  // Encoder count at which the robot must stop
+
+// Helper function to read current state of encoder channels A and B
+inline uint8_t readAB() {
+  return (digitalRead(ENC_A) << 1) | (digitalRead(ENC_B));
+}
+
+// Interrupt service routine (ISR) for encoder updates
+void isr_any() {
+  uint8_t curr = readAB();               // Read current encoder state
+  uint8_t idx  = ((prevAB << 2) | curr) & 0x0F; // Combine previous and current state
+  encoderCount += quad_table[idx];       // Update encoder count according to table
+  prevAB = curr;                         // Store current state for next ISR
+}
+// =================================================
+
+// —— START FLAG ——  
+bool startFlag = false;  // Flag to indicate when robot should start moving
+
 void setup() {
-  // 1) Serial1 for start command
-  Serial1.begin(115200);
-  Serial1.println("Waiting for 's' to start…");
+  // —— ENCODER SETUP ——  
+  pinMode(ENC_A, INPUT_PULLUP);  // Enable internal pull-up resistor
+  pinMode(ENC_B, INPUT_PULLUP);  // Enable internal pull-up resistor
+  prevAB = readAB();             // Initialize previous state
+  attachInterrupt(digitalPinToInterrupt(ENC_A), isr_any, CHANGE); // Interrupt on channel A
+  attachInterrupt(digitalPinToInterrupt(ENC_B), isr_any, CHANGE); // Interrupt on channel B
 
-  // 2) Initialize IMU over I²C
-  Wire.begin();
-  imu.initialize();
-  if (!imu.testConnection()) {
-    Serial1.println("IMU not found!");
-    while(true); // Halt if IMU missing
-  }
-  Serial1.println("IMU initialized.");
+  // —— ULTRASONIC SENSOR SETUP ——  
+  pinMode(TRIG_LEFT,   OUTPUT);
+  pinMode(ECHO_LEFT,   INPUT);
+  pinMode(TRIG_CENT,   OUTPUT);
+  pinMode(ECHO_CENT,   INPUT);
+  pinMode(TRIG_RIGHT,  OUTPUT);
+  pinMode(ECHO_RIGHT,  INPUT);
 
-  // 3) Configure sensor & actuator pins
-  pinMode(TRIG_LEFT, OUTPUT);  pinMode(ECHO_LEFT, INPUT);
-  pinMode(TRIG_CENT, OUTPUT);  pinMode(ECHO_CENT, INPUT);
-  pinMode(TRIG_RIGHT, OUTPUT); pinMode(ECHO_RIGHT, INPUT);
+  // —— SERVO AND MOTOR SETUP ——  
+  steeringServo.attach(SERVO_PIN);       // Attach servo object to pin
+  steeringServo.write(SERVO_CENTER);     // Initialize servo to center position
 
-  steeringServo.attach(SERVO_PIN);
-  steeringServo.write(SERVO_CENTER);
-
-  pinMode(ENB, OUTPUT);
-  pinMode(IN3, OUTPUT);
-  pinMode(IN4, OUTPUT);
-  digitalWrite(IN3, HIGH); // forward
+  pinMode(ENB, OUTPUT);                  // Motor speed control
+  pinMode(IN3, OUTPUT);                  // Motor direction
+  pinMode(IN4, OUTPUT);                  // Motor direction
+  digitalWrite(IN3, HIGH);               // Set initial direction forward
   digitalWrite(IN4, LOW);
 
-  prevTime = micros();
+  prevTime = micros();                   // Initialize timing for PD derivative
+
+  // —— SERIAL COMMUNICATION ——  
+  Serial1.begin(115200);   // Serial1 for Raspberry Pi communication
+  Serial.begin(115200);    // USB serial for debugging
+  while (!Serial) {}       // Wait for serial port to be ready
+  Serial.println(F("System ready, waiting for 's' from RPi..."));
 }
-```
--Serial1 listens for 's' to begin
--IMU is initialized and tested
--Pins for sensors, servo, and motor are configured and centered
-Main Loop
-```cpp
+
 void loop() {
-  // A) Wait for 's' on Serial1
-  if (!started) {
-    if (Serial1.available() && Serial1.read() == 's') {
-      started = true;
-      Serial1.println("Starting navigation…");
-    } else {
-      return; // idle until start
+  // —— SERIAL1 LISTENING ——  
+  if (Serial1.available()) {
+    char cmd = Serial1.read();  // Read command from Raspberry Pi
+    if (cmd == 's') {           // If 's' is received, start robot
+      startFlag = true;
+      encoderCount = 0;         // Reset encoder when starting
+      Serial.println(F("✔ Start received from RPi"));
     }
   }
 
-  // B) Read distances
-  float dL = readUltrasonic(TRIG_LEFT,  ECHO_LEFT);
-  float dC = readUltrasonic(TRIG_CENT,  ECHO_CENT);
-  float dR = readUltrasonic(TRIG_RIGHT, ECHO_RIGHT);
-
-  // C) Front obstacle → stop or go
-  if (dC <= FRONT_MIN)        analogWrite(ENB, 0);
-  else                        analogWrite(ENB, MOTOR_SPEED);
-
-  // D) Emergency side avoidance or PD steering
-  if (dL <= SIDE_MIN_LEFT)    steeringServo.write(SERVO_MAX_RIGHT);
-  else if (dR <= SIDE_MIN_RIGHT) steeringServo.write(SERVO_MAX_LEFT);
-  else {
-    unsigned long now = micros();
-    float dt = (now - prevTime) / 1e6;
-    prevTime = now;
-    float error = dR - dL;
-    float dErr  = (error - prevError) / dt;
-    prevError   = error;
-    int delta = constrain(int(Kp*error + Kd*dErr),
-                          -SERVO_DEADZONE, SERVO_DEADZONE);
-    steeringServo.write(SERVO_CENTER + delta);
+  // —— WAIT FOR START FLAG ——  
+  if (!startFlag) {
+    analogWrite(ENB, 0);              // Stop motor
+    steeringServo.write(SERVO_CENTER); // Center steering
+    delay(50);                          // Short delay to avoid busy loop
+    return;
   }
 
-  // E) Curve detection via IMU gyro Z-axis
-  float gyroZ = imu.getRotationZ() / 131.0;  // °/s
-  const float TURN_THRESHOLD = 30.0;
-  if (abs(gyroZ) > TURN_THRESHOLD) {
-    if (!turning) {
-      turning = true;
-      curveCount++;
-      Serial1.print("Curve #"); Serial1.println(curveCount);
-    }
+  // —— READ ENCODER ——  
+  noInterrupts();           // Temporarily disable interrupts to safely read shared variable
+  long c = encoderCount;    // Copy encoder count
+  interrupts();             // Re-enable interrupts
+
+  if (c >= STOP_COUNTS) {   // If encoder count exceeds limit
+    analogWrite(ENB, 0);               // Stop motor
+    steeringServo.write(SERVO_CENTER); // Center steering
+    Serial.println(F("🚨 STOP: encoder limit reached 🚨"));
+    delay(100);
+    return;
+  }
+
+  // —— PD CONTROL ——  
+  float dL = readUltrasonic(TRIG_LEFT,  ECHO_LEFT);   // Left distance
+  float dC = readUltrasonic(TRIG_CENT,  ECHO_CENT);   // Center distance
+  float dR = readUltrasonic(TRIG_RIGHT, ECHO_RIGHT);  // Right distance
+
+  // —— FRONT OBSTACLE CHECK ——  
+  if (dC <= FRONT_MIN) {          // If something is too close in front
+    analogWrite(ENB, 0);          // Stop motor
   } else {
-    turning = false;
+    analogWrite(ENB, MOTOR_SPEED); // Move forward at fixed speed
   }
 
-  // F) Stop after 12 curves
-  if (curveCount >= 12) {
-    analogWrite(ENB, 0);
-    steeringServo.write(SERVO_CENTER);
-    Serial1.println("12 curves reached—stopping.");
-    while(true);
+  // —— SIDE OBSTACLE AVOIDANCE ——  
+  if (dL <= SIDE_MIN_LEFT) {                   // Too close to left wall
+    steeringServo.write(SERVO_MAX_RIGHT);      // Steer right
+  }
+  else if (dR <= SIDE_MIN_RIGHT) {            // Too close to right wall
+    steeringServo.write(SERVO_MAX_LEFT);      // Steer left
+  }
+  else {
+    // —— PD STEERING CONTROL ——  
+    unsigned long now = micros();           // Current time
+    float dt = (now - prevTime) / 1e6;     // Time difference in seconds
+    prevTime = now;
+
+    float error  = dR - dL;                 // Difference between right and left distances
+    float dError = (error - prevError) / dt; // Derivative of error
+    prevError    = error;
+
+    float control = Kp * error + Kd * dError;  // PD control signal
+    int delta = constrain(int(control), -SERVO_DEADZONE, SERVO_DEADZONE); // Limit deviation
+    steeringServo.write(constrain(SERVO_CENTER + delta, SERVO_MAX_LEFT, SERVO_MAX_RIGHT)); // Set servo
   }
 
-  delay(50); // ~20 Hz
+  delay(50); // Small delay to control loop speed
 }
-```
--Start check: waits for 's'
--Read sensors: left, center, right
--Front control: stop or run motor
--Side avoidance & PD steering: emergency or smooth control
--Curve detection: increment count when gyro Z exceeds threshold
--Stop condition: halt when 12 curves detected
--Utility: Ultrasonic Read
-```cpp
+
+// —— ULTRASONIC SENSOR READING FUNCTION ——  
 float readUltrasonic(int trigPin, int echoPin) {
-  digitalWrite(trigPin, LOW);
-  delayMicroseconds(2);
-  digitalWrite(trigPin, HIGH);
-  delayMicroseconds(10);
-  digitalWrite(trigPin, LOW);
-  long duration = pulseIn(echoPin, HIGH, 30000);
-  if (duration == 0) return 300; 
-  return duration * 0.0343 / 2.0;  // cm
+  digitalWrite(trigPin, LOW);               // Ensure trigger pin is LOW
+  delayMicroseconds(2);                     // Short delay
+  digitalWrite(trigPin, HIGH);              // Send pulse
+  delayMicroseconds(10);                    // 10us HIGH pulse
+  digitalWrite(trigPin, LOW);               // End pulse
+  long duration = pulseIn(echoPin, HIGH, 30000); // Measure pulse duration (max 30ms)
+  if (duration == 0) return 300;            // Timeout → treat as very far
+  return duration * 0.0343 / 2.0;          // Convert duration to cm
 }
-```
-Triggers the HC-SR04 sensor, measures echo pulse width, and converts it to distance in centimeters.
+
 
 ## 2. **Obstacle Challenge code**
 Import libraries
