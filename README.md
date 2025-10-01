@@ -552,7 +552,6 @@ Prints a message to inform the user that the system is ready and listening for t
 **Stay tuned for updates as we continue to improve our robot's performance and capabilities!**
 
 # References
-- 
 - https://docs.ultralytics.com/models/yolov8/
 - https://colab.research.google.com/github/roboflow/notebooks/blob/main/notebooks/train-yolov8-object-detection-on-custom-dataset.ipynb
 - https://nerdvana.ro/wro-fe/
