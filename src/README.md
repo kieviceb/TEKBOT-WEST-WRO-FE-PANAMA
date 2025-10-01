@@ -1,5 +1,6 @@
 
 ## 1. **Open Challenge code**
+```ino
 #include <Servo.h>  // Include the Servo library to control a hobby servo motor
 
 // —— ULTRASONIC SENSOR PINOUT ——  
@@ -191,7 +192,7 @@ float readUltrasonic(int trigPin, int echoPin) {
   return duration * 0.0343 / 2.0;          // Convert duration to cm
 }
 
-
+```
 ## 2. **Obstacle Challenge code**
 Import libraries
 ```python
